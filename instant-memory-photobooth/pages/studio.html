@@ -1,0 +1,1281 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Studio | Instant Memory</title>
+
+  <link rel="icon" href="../assets/icons/logotrangchu.png">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Roboto:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../src/css/main.css">
+  <link rel="stylesheet" href="../src/css/pages.css">
+
+  <script defer src="../src/js/vi.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Quicksand", "Roboto", Arial, sans-serif;
+      color: #171717;
+      background:
+        radial-gradient(circle at 50% 8%, rgba(255, 172, 200, 0.35), transparent 32%),
+        radial-gradient(circle at 20% 22%, rgba(255, 220, 232, 0.75), transparent 34%),
+        linear-gradient(180deg, #fff6f9 0%, #ffe8f0 100%);
+      overflow-x: hidden;
+    }
+
+    /* Xóa thanh menu ở trang studio */
+    #header-announcement,
+    #main-header,
+    #new-navbar,
+    #hamburger-home-trigger,
+    #hamburger-nav {
+      display: none !important;
+    }
+
+    button,
+    input,
+    select,
+    label {
+      font-family: "Quicksand", "Roboto", Arial, sans-serif;
+    }
+
+    .studio-topbar {
+      width: min(1080px, calc(100% - 36px));
+      margin: 24px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .studio-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 130px;
+      height: 90px;
+      text-decoration: none;
+    }
+
+    .studio-logo img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      opacity: 0.88;
+      filter: saturate(0.95) drop-shadow(0 4px 10px rgba(255, 105, 150, 0.08));
+    }
+
+    .studio-back-home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 90, 140, 0.18);
+      color: #ff2f7d;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(255, 105, 150, 0.12);
+      transition: 0.25s ease;
+    }
+
+    .studio-back-home:hover {
+      transform: translateY(-3px);
+      background: #fff;
+      box-shadow: 0 18px 34px rgba(255, 80, 135, 0.18);
+    }
+
+    .studio-shell {
+      width: min(1080px, calc(100% - 36px));
+      margin: 10px auto 70px;
+      padding: 0 0 30px;
+      text-align: center;
+      position: relative;
+    }
+
+    .studio-header-area {
+      margin: 0 auto 30px;
+      text-align: center;
+    }
+
+    .studio-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      background: #fff0f5;
+      color: #ff2f7d;
+      font-size: 14px;
+      font-weight: 900;
+      border: 1px solid rgba(255, 47, 125, 0.15);
+    }
+
+    .studio-header-text {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #111;
+      text-transform: none;
+    }
+
+    #progressCounter {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 800;
+      color: #ff2f7d;
+    }
+
+    .studio-stage {
+      width: min(780px, 100%);
+      aspect-ratio: 16 / 10;
+      margin: 0 auto 28px;
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #171717;
+      box-shadow:
+        0 26px 70px rgba(255, 105, 150, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.65);
+    }
+
+    #camera,
+    #uploadPreview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+
+    #camera.active,
+    #uploadPreview.active {
+      display: block;
+    }
+
+    .studio-empty {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      background: #171717;
+      z-index: 2;
+    }
+
+    .studio-empty img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      opacity: 0.95;
+    }
+
+    .studio-empty p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .studio-countdown {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      font-size: 120px;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.18);
+    }
+
+    .studio-countdown.show {
+      display: flex;
+    }
+
+    .studio-flash {
+      position: absolute;
+      inset: 0;
+      background: #fff;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    .studio-flash.active {
+      animation: flashStudio 0.22s ease;
+    }
+
+    @keyframes flashStudio {
+      0% { opacity: 0; }
+      45% { opacity: 0.95; }
+      100% { opacity: 0; }
+    }
+
+    .studio-error {
+      width: min(780px, 100%);
+      margin: 12px auto 0;
+      color: #ff2f7d;
+      font-weight: 800;
+      line-height: 1.6;
+    }
+
+    .studio-controls-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 30px auto 22px;
+    }
+
+    .studio-pill-btn,
+    #startBtn {
+      min-width: 170px;
+      height: 56px;
+      border-radius: 999px;
+      border: 1.5px solid rgba(255, 47, 125, 0.28);
+      background: rgba(255, 255, 255, 0.88);
+      color: #8a4962;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 12px 28px rgba(255, 105, 150, 0.1);
+    }
+
+    .studio-pill-btn:hover,
+    #startBtn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 36px rgba(255, 47, 125, 0.18);
+    }
+
+    #startBtn {
+      border: none;
+      color: #fff;
+      background: linear-gradient(135deg, #ff7aa8, #ff0f72);
+      box-shadow: 0 16px 34px rgba(255, 47, 125, 0.3);
+    }
+
+    #startBtn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .studio-filter-bar {
+      width: min(650px, 100%);
+      min-height: 88px;
+      margin: 0 auto 28px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1.5px solid rgba(255, 90, 140, 0.24);
+      box-shadow:
+        0 18px 42px rgba(255, 105, 150, 0.13),
+        inset 0 0 0 1px rgba(255,255,255,0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .studio-filter-bar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-choice.filter-circle {
+      flex: 0 0 auto;
+      width: 66px;
+      height: 66px;
+      padding: 0;
+      border: 3px solid transparent;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+      transition: 0.25s ease;
+    }
+
+    .filter-choice.filter-circle img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .filter-choice.filter-circle:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 16px 30px rgba(255, 47, 125, 0.18);
+    }
+
+    .filter-choice.filter-circle.active {
+      border-color: #ff2f7d;
+      box-shadow:
+        0 0 0 5px rgba(255, 47, 125, 0.12),
+        0 16px 30px rgba(255, 47, 125, 0.22);
+    }
+
+    .filter-more {
+      flex: 0 0 auto;
+      width: 66px;
+      height: 66px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff7aa8, #ff0f72);
+      color: #fff;
+      font-size: 26px;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 16px 32px rgba(255, 47, 125, 0.28);
+      transition: 0.25s ease;
+    }
+
+    .filter-more:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    .studio-button-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 26px auto 10px;
+    }
+
+    .new-sub-button,
+    .studio-upload-label {
+      min-width: 160px;
+      height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1.5px solid rgba(255, 47, 125, 0.24);
+      background: rgba(255, 255, 255, 0.9);
+      color: #ff2f7d;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.25s ease;
+      text-decoration: none;
+    }
+
+    .new-sub-button:hover,
+    .studio-upload-label:hover {
+      transform: translateY(-3px);
+      background: #fff;
+      box-shadow: 0 16px 32px rgba(255, 47, 125, 0.14);
+    }
+
+    .small-note {
+      margin: 14px auto 0;
+      max-width: 680px;
+      color: #777;
+      font-size: 14.5px;
+      line-height: 1.65;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Result editor */
+    .result-container {
+      width: min(1180px, calc(100% - 36px));
+      margin: 50px auto 80px;
+      padding: 42px;
+      border-radius: 36px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(255, 120, 160, 0.22);
+      box-shadow: 0 24px 55px rgba(255, 105, 150, 0.14);
+      backdrop-filter: blur(16px);
+    }
+
+    .result-header {
+      margin: 0 0 30px;
+      text-align: center;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.15;
+      font-weight: 800;
+      color: #111;
+      letter-spacing: -0.8px;
+    }
+
+    .editor-workspace {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .editor-preview {
+      background: #fff8fb;
+      border: 1px solid rgba(255, 90, 140, 0.16);
+      border-radius: 30px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 16px 34px rgba(255, 105, 150, 0.09);
+    }
+
+    #photoPreview {
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .editor-panel {
+      background: #fff;
+      border: 1px solid rgba(255, 90, 140, 0.16);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: 0 16px 34px rgba(255, 105, 150, 0.09);
+    }
+
+    .editor-panel h2 {
+      margin: 0 0 22px;
+      font-size: 28px;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .editor-grid label {
+      display: grid;
+      gap: 8px;
+      color: #555;
+      font-weight: 800;
+    }
+
+    .custom-select {
+      width: 100%;
+      height: 46px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(255, 90, 140, 0.24);
+      background: #fff8fb;
+      padding: 0 14px;
+      color: #333;
+      font-weight: 700;
+      outline: none;
+    }
+
+    .editor-group {
+      margin-top: 24px;
+    }
+
+    .editor-group h3 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      font-weight: 900;
+      color: #111;
+    }
+
+    .frame-swatches,
+    .shape-tools,
+    .photo-order,
+    .sticker-tools,
+    .logo-tools,
+    .sticker-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .frame-swatches button,
+    .shape-tools button,
+    .sticker-tools button,
+    .logo-tools button,
+    .sticker-actions button {
+      min-width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(255, 90, 140, 0.24);
+      background: #fff8fb;
+      color: #333;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .frame-swatches button:hover,
+    .shape-tools button:hover,
+    .sticker-tools button:hover,
+    .logo-tools button:hover,
+    .sticker-actions button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(255, 47, 125, 0.14);
+    }
+
+    .frame-swatches button {
+      background: var(--swatch, #fff);
+    }
+
+    .pattern-swatch {
+      background-image: var(--pattern) !important;
+      background-size: cover !important;
+      background-position: center !important;
+    }
+
+    .color-picker-swatch {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(255, 90, 140, 0.24);
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .color-picker-swatch input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .selected {
+      border-color: #ff2f7d !important;
+      box-shadow: 0 0 0 4px rgba(255, 47, 125, 0.12);
+    }
+
+    .studio-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .studio-actions button {
+      min-width: 160px;
+      height: 52px;
+      border-radius: 999px;
+      border: none;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    #downloadBtn {
+      background: linear-gradient(135deg, #ff7aa8, #ff0f72);
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(255, 47, 125, 0.3);
+    }
+
+    @media screen and (max-width: 900px) {
+      .studio-topbar {
+        margin-top: 16px;
+      }
+
+      .studio-logo {
+        width: 100px;
+        height: 76px;
+      }
+
+      .studio-logo img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .studio-back-home {
+        padding: 11px 16px;
+        font-size: 13px;
+      }
+
+      .editor-workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .editor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .studio-shell {
+        width: min(100% - 24px, 1080px);
+      }
+
+      .studio-stage {
+        aspect-ratio: 4 / 5;
+      }
+
+      .studio-controls-row {
+        gap: 12px;
+      }
+
+      .studio-pill-btn,
+      #startBtn {
+        min-width: 120px;
+        height: 48px;
+        font-size: 15px;
+      }
+
+      .studio-filter-bar {
+        justify-content: flex-start;
+        min-height: 78px;
+        padding: 10px 14px;
+      }
+
+      .filter-choice.filter-circle,
+      .filter-more {
+        width: 58px;
+        height: 58px;
+      }
+
+      .result-container {
+        width: min(100% - 24px, 1180px);
+        padding: 26px 18px;
+        border-radius: 28px;
+      }
+    }
+
+    /* ===== BỘ HẸN GIỜ CHỤP ẢNH ===== */
+.timer-control {
+  width: min(520px, 100%);
+  margin: 0 auto 24px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1.5px solid rgba(255, 90, 140, 0.22);
+  box-shadow:
+    0 16px 36px rgba(255, 105, 150, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.timer-label {
+  padding-left: 8px;
+  color: #8a4962;
+  font-size: 15px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.timer-options {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timer-option {
+  width: 58px;
+  height: 42px;
+  border: none;
+  border-radius: 999px;
+  background: #fff5f9;
+  color: #ff2f7d;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.timer-option:hover {
+  transform: translateY(-2px);
+  background: #ffe8f1;
+}
+
+.timer-option.active {
+  color: #fff;
+  background: linear-gradient(135deg, #ff7aa8, #ff0f72);
+  box-shadow: 0 12px 24px rgba(255, 47, 125, 0.25);
+}
+
+@media screen and (max-width: 600px) {
+  .timer-control {
+    border-radius: 26px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .timer-label {
+    padding-left: 0;
+  }
+}
+/* ===== CAMERA + ẢNH ĐÃ CHỤP BÊN CẠNH ===== */
+.studio-camera-layout {
+  width: min(980px, 100%);
+  margin: 0 auto 28px;
+  display: grid;
+  grid-template-columns: minmax(0, 780px) 180px;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.studio-camera-layout .studio-stage {
+  width: 100%;
+  margin: 0 !important;
+}
+
+/* Cột ảnh bên phải */
+.captured-sidebar {
+  min-height: 100%;
+  border-radius: 24px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1.5px solid rgba(255, 90, 140, 0.22);
+  box-shadow:
+    0 18px 42px rgba(255, 105, 150, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.72);
+}
+
+.captured-sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.captured-sidebar-head h3 {
+  margin: 0;
+  color: #111;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+#capturedCount {
+  color: #ff2f7d;
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.captured-list {
+  display: grid;
+  gap: 12px;
+}
+
+.captured-empty {
+  min-height: 220px;
+  border-radius: 18px;
+  border: 1.5px dashed rgba(255, 90, 140, 0.32);
+  background: #fff8fb;
+  color: #999;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 14px;
+}
+
+.captured-item {
+  position: relative;
+  border-radius: 18px;
+  padding: 7px;
+  background: #fff;
+  border: 1px solid rgba(255, 90, 140, 0.18);
+  box-shadow: 0 12px 24px rgba(255, 105, 150, 0.12);
+  animation: capturedPop 0.25s ease;
+}
+
+.captured-item img {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  display: block;
+  border-radius: 13px;
+}
+
+.captured-index {
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff7aa8, #ff0f72);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes capturedPop {
+  from {
+    transform: translateY(8px) scale(0.96);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== SỐ GIÂY HIỆN TRÊN KHUNG CAMERA ===== */
+.studio-countdown {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Quicksand", "Roboto", Arial, sans-serif;
+  font-size: clamp(80px, 12vw, 150px);
+  font-weight: 900;
+  line-height: 1;
+  text-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.45),
+    0 0 26px rgba(255, 47, 125, 0.55);
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(2px);
+}
+
+.studio-countdown.show {
+  display: flex;
+}
+
+@media screen and (max-width: 900px) {
+  .studio-camera-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .captured-sidebar {
+    width: 100%;
+  }
+
+  .captured-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .captured-empty {
+    grid-column: 1 / -1;
+    min-height: 90px;
+  }
+
+  .captured-item img {
+    height: 92px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .captured-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ===== SHARE / GIF / QR ===== */
+.studio-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.studio-actions button {
+  min-width: 145px;
+  height: 54px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+#shareBtn,
+#downloadGifBtn,
+#qrBtn {
+  background: rgba(255, 255, 255, 0.94) !important;
+  color: #ff2f7d !important;
+  border: 1.5px solid rgba(255, 47, 125, 0.24) !important;
+  box-shadow: 0 14px 30px rgba(255, 105, 150, 0.12);
+}
+
+#shareBtn:hover,
+#downloadGifBtn:hover,
+#qrBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(255, 47, 125, 0.18);
+}
+
+.qr-box {
+  width: min(360px, calc(100% - 36px));
+  margin: 26px auto 0;
+  padding: 24px;
+  border-radius: 28px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1.5px solid rgba(255, 90, 140, 0.24);
+  box-shadow: 0 20px 46px rgba(255, 105, 150, 0.16);
+}
+
+.qr-box h3 {
+  margin: 0 0 16px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #111;
+}
+
+#qrCode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+  border-radius: 20px;
+  background: #fff;
+}
+
+#qrCode img,
+#qrCode canvas {
+  border-radius: 12px;
+}
+
+.qr-box p {
+  margin: 14px 0 0;
+  color: #777;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+  </style>
+</head>
+
+<body>
+  <div class="studio-topbar">
+    <a class="studio-logo" href="../index.html" aria-label="Instant Memory">
+      <img src="../assets/icons/logotrangchu.png" alt="Instant Memory Logo">
+    </a>
+
+    <a class="studio-back-home" href="../index.html">← Về trang chủ</a>
+  </div>
+
+  <main class="studio-shell canvas-centered" id="studioView">
+    <div class="gradientBgCanvas"></div>
+
+    <div class="studio-header-area">
+      <div class="studio-badge">📸 Instant Memory Studio</div>
+      <h1 class="studio-header-text">studio Instant Memory</h1>
+      <p id="progressCounter">0 / 3</p>
+    </div>
+
+    <div class="studio-camera-layout">
+  <div class="studio-stage">
+    <video id="camera" autoplay playsinline muted></video>
+
+    <img id="uploadPreview" alt="Uploaded preview">
+
+    <div class="studio-empty" id="studioEmpty">
+      <img src="../assets/icons/camera-icon-white.webp" alt="">
+      <p>Bật camera hoặc tải ảnh lên để bắt đầu.</p>
+    </div>
+
+    <!-- Số giây sẽ hiện trực tiếp trên khung camera -->
+    <div class="studio-countdown" id="studioCountdown"></div>
+
+    <div class="studio-flash" id="studioFlash"></div>
+    <div class="studio-error" id="studioError"></div>
+  </div>
+
+  <!-- Cột ảnh đã chụp -->
+  <aside class="captured-sidebar">
+    <div class="captured-sidebar-head">
+      <h3>Ảnh đã chụp</h3>
+      <span id="capturedCount">0 ảnh</span>
+    </div>
+
+    <div class="captured-list" id="capturedList">
+      <div class="captured-empty">
+        Chưa có ảnh nào
+      </div>
+    </div>
+  </aside>
+</div>  
+
+   <div class="studio-controls-row">
+  <button class="studio-pill-btn circle-tool" id="mirrorBtn" aria-pressed="true" title="Mirror" type="button">
+    Mirror: Off
+  </button>
+
+  <button id="startBtn" type="button" disabled>
+    START
+  </button>
+
+  <button class="studio-pill-btn circle-tool" id="flashBtn" aria-pressed="true" title="Flash" type="button">
+    Flash: On
+  </button>
+</div>
+
+<div class="timer-control">
+  <span class="timer-label">Hẹn giờ chụp</span>
+
+  <div class="timer-options">
+    <button class="timer-option active" type="button" data-timer="3">3s</button>
+    <button class="timer-option" type="button" data-timer="5">5s</button>
+    <button class="timer-option" type="button" data-timer="10">10s</button>
+  </div>
+</div>
+
+    <div class="studio-filter-bar">
+      <button class="filter-choice filter-circle active" type="button" data-filter="none" aria-label="Normal">
+        <img src="../assets/filters/fresh.webp" alt="Normal">
+      </button>
+
+      <button class="filter-choice filter-circle" type="button" data-filter="grayscale(1) contrast(1.15)" aria-label="B&W">
+        <img src="../assets/spotlight/week7/week7.1.webp" alt="B&W">
+      </button>
+
+      <button class="filter-choice filter-circle" type="button" data-filter="sepia(.25) saturate(1.25) brightness(1.06)" aria-label="Warm">
+        <img src="../assets/filters/candy.webp" alt="Warm">
+      </button>
+
+      <button class="filter-choice filter-circle" type="button" data-filter="sepia(.72) contrast(1.08)" aria-label="Vintage">
+        <img src="../assets/filters/nostalgia.webp" alt="Vintage">
+      </button>
+
+      <button class="filter-choice filter-circle" type="button" data-filter="brightness(1.12) contrast(1.08)" aria-label="Bright">
+        <img src="../assets/filters/citrus.webp" alt="Bright">
+      </button>
+
+      <button class="filter-choice filter-circle" type="button" data-filter="saturate(1.35) contrast(1.08)" aria-label="Vivid">
+        <img src="../assets/filters/ogvintage.webp" alt="Vivid">
+      </button>
+
+      <button class="filter-more" type="button" aria-label="More filters">
+        •••
+      </button>
+    </div>
+
+    <div class="studio-button-container">
+      <button id="enableCamera" class="new-sub-button" type="button">Bật camera</button>
+
+      <label for="uploadInput" class="studio-upload-label">Tải ảnh lên</label>
+      <input id="uploadInput" type="file" accept="image/*" hidden>
+
+      <select class="custom-select" id="cameraSelect" aria-label="Camera" style="max-width: 220px;">
+        <option value="">Camera mặc định</option>
+      </select>
+    </div>
+
+    <p class="small-note">
+      Bấm START một lần, các ảnh còn lại sẽ được chụp tự động. Ảnh chỉ xử lý trên trình duyệt và không tải lên máy chủ.
+    </p>
+  </main>
+
+  <section class="result-container result-panel" id="resultPanel">
+    <h1 class="result-header">Chỉnh sửa ảnh của bạn ♡</h1>
+
+    <div class="editor-workspace">
+      <div class="editor-preview">
+        <div id="photoPreview"></div>
+        <p class="small-note">Chọn sticker, sau đó bấm vào ảnh để đặt sticker.</p>
+      </div>
+
+      <aside class="editor-panel editor-panel-wide">
+        <h2>Tùy chỉnh</h2>
+
+        <div class="editor-grid">
+          <label>
+            Layout
+            <select id="resultLayout" class="custom-select">
+              <option value="strip">Photo strip</option>
+              <option value="grid">2 × 2 grid</option>
+            </select>
+          </label>
+
+          <label>
+            Filter
+            <select id="resultFilter" class="custom-select">
+              <option value="none">Normal</option>
+              <option value="grayscale(1) contrast(1.15)">B&W</option>
+              <option value="sepia(.72) contrast(1.08)">Vintage</option>
+              <option value="saturate(1.35) contrast(1.08)">Vivid</option>
+              <option value="brightness(1.08) contrast(1.1)">Bright</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="editor-group">
+          <h3>Màu khung</h3>
+
+          <div class="frame-swatches">
+            <label class="color-picker-swatch" title="Custom color">
+              <input id="resultFrameColor" type="color">
+            </label>
+
+            <button data-frame-color="#ffc2d1" style="--swatch:#ffc2d1" aria-label="Pink frame"></button>
+            <button data-frame-color="#caf0f8" style="--swatch:#caf0f8" aria-label="Blue frame"></button>
+            <button data-frame-color="#fff8a5" style="--swatch:#fff8a5" aria-label="Yellow frame"></button>
+            <button data-frame-color="#90a955" style="--swatch:#90a955" aria-label="Green frame"></button>
+            <button data-frame-color="#c19ee0" style="--swatch:#c19ee0" aria-label="Purple frame"></button>
+            <button data-frame-color="#ddbea9" style="--swatch:#ddbea9" aria-label="Beige frame"></button>
+            <button data-frame-color="#780000" style="--swatch:#780000" aria-label="Red frame"></button>
+            <button data-frame-color="#ffffff" style="--swatch:#ffffff" aria-label="White frame"></button>
+            <button data-frame-color="#111111" style="--swatch:#111111" aria-label="Black frame"></button>
+
+            <button class="pattern-swatch" data-frame-pattern="../assets/frames/pink-plaid.jpg" style="--pattern:url('../assets/frames/pink-plaid.jpg')" aria-label="Pink plaid frame"></button>
+            <button class="pattern-swatch" data-frame-pattern="../assets/frames/cow-print.jpg" style="--pattern:url('../assets/frames/cow-print.jpg')" aria-label="Cow print frame"></button>
+            <button class="pattern-swatch" data-frame-pattern="../assets/frames/blue-plaid.jpg" style="--pattern:url('../assets/frames/blue-plaid.jpg')" aria-label="Blue plaid frame"></button>
+            <button class="pattern-swatch" data-frame-pattern="../assets/frames/grid-paper.jpg" style="--pattern:url('../assets/frames/grid-paper.jpg')" aria-label="Grid paper frame"></button>
+            <button class="pattern-swatch" data-frame-pattern="../assets/frames/stardust.jpg" style="--pattern:url('../assets/frames/stardust.jpg')" aria-label="Stardust frame"></button>
+            <button class="pattern-swatch" data-frame-pattern="../assets/frames/red-roses-paint.jpg" style="--pattern:url('../assets/frames/red-roses-paint.jpg')" aria-label="Rose frame"></button>
+            <button class="pattern-swatch" data-frame-pattern="../assets/frames/water.jpg" style="--pattern:url('../assets/frames/water.jpg')" aria-label="Water frame"></button>
+            <button class="pattern-swatch" data-frame-pattern="../assets/frames/rough-texture.jpg" style="--pattern:url('../assets/frames/rough-texture.jpg')" aria-label="Texture frame"></button>
+          </div>
+        </div>
+
+        <div class="editor-group">
+          <h3>Hình dạng ảnh</h3>
+
+          <div class="shape-tools">
+            <button data-photo-shape="none" class="selected" aria-label="No photo shape">⊘</button>
+            <button data-photo-shape="square" aria-label="Rounded square photos">□</button>
+            <button data-photo-shape="circle" aria-label="Circle photos">○</button>
+            <button data-photo-shape="heart" aria-label="Heart photos">♡</button>
+          </div>
+        </div>
+
+        <div class="editor-group">
+          <h3>Thứ tự ảnh</h3>
+          <div id="photoOrder" class="photo-order"></div>
+        </div>
+
+        <div class="editor-group">
+          <h3>Stickers</h3>
+
+          <div class="sticker-tools sticker-library">
+            <button data-sticker="♡" aria-label="Heart sticker">♡</button>
+            <button data-sticker="★" aria-label="Star sticker">★</button>
+            <button data-sticker="✿" aria-label="Flower sticker">✿</button>
+            <button data-sticker="✦" aria-label="Sparkle sticker">✦</button>
+            <button data-sticker="🐰" aria-label="Rabbit sticker">🐰</button>
+            <button data-sticker="🍀" aria-label="Clover sticker">🍀</button>
+            <button data-sticker="💋" aria-label="Kiss sticker">💋</button>
+            <button data-sticker="💗" aria-label="Pink heart sticker">💗</button>
+            <button data-sticker="🎀" aria-label="Bow sticker">🎀</button>
+            <button data-sticker="🦢" aria-label="Swan sticker">🦢</button>
+            <button data-sticker="🎉" aria-label="Party sticker">🎉</button>
+            <button data-sticker="🐥" aria-label="Chick sticker">🐥</button>
+            <button data-sticker="🧸" aria-label="Bear sticker">🧸</button>
+            <button data-sticker="🐱" aria-label="Cat sticker">🐱</button>
+            <button data-sticker="🐶" aria-label="Dog sticker">🐶</button>
+            <button data-sticker="🌸" aria-label="Blossom sticker">🌸</button>
+            <button data-sticker="🍓" aria-label="Strawberry sticker">🍓</button>
+            <button data-sticker="🍑" aria-label="Peach sticker">🍑</button>
+            <button data-sticker="🐇" aria-label="Bunny sticker">🐇</button>
+            <button data-sticker="🌼" aria-label="Daisy sticker">🌼</button>
+            <button data-sticker="💎" aria-label="Gem sticker">💎</button>
+            <button data-sticker="🍄" aria-label="Mushroom sticker">🍄</button>
+            <button data-sticker="💵" aria-label="Money sticker">💵</button>
+            <button data-sticker="🧋" aria-label="Drink sticker">🧋</button>
+          </div>
+
+          <div class="sticker-actions">
+            <button type="button" id="undoSticker">Undo sticker</button>
+            <button type="button" id="clearStickers">Clear</button>
+          </div>
+        </div>
+
+        <div class="editor-group">
+          <h3>Logo</h3>
+
+          <div class="logo-tools">
+            <button data-logo="ENG" class="selected">ENG</button>
+            <button data-logo="KOR">KOR</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="studio-actions">
+  <button class="new-sub-button" id="retakeBtn" type="button">Chụp lại</button>
+  <button class="new-main-button" id="downloadBtn" type="button">Tải xuống</button>
+  <button class="new-sub-button" id="shareBtn" type="button">Share</button>
+  <button class="new-sub-button" id="downloadGifBtn" type="button">Tải GIF</button>
+  <button class="new-sub-button" id="qrBtn" type="button">Tạo QR</button>
+</div>
+
+<div class="qr-box" id="qrBox" hidden>
+  <h3>Mã QR tải ảnh</h3>
+  <div id="qrCode"></div>
+  <p>Quét mã QR để mở ảnh đã chụp.</p>
+</div>
+  </section>
+
+  <canvas id="workCanvas" hidden></canvas>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+<script>
+  window.GIF_WORKER_SCRIPT = "https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js";
+</script>
+
+<script src="../src/js/studio.js"></script>
+
+<script>
+  const filterButtons = document.querySelectorAll(".filter-choice");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+    });
+  });
+
+  const timerButtons = document.querySelectorAll(".timer-option");
+
+  timerButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      timerButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      window.selectedCountdownTime = Number(button.dataset.timer);
+      localStorage.setItem("instantMemoryTimer", String(window.selectedCountdownTime));
+    });
+  });
+
+  const savedTimer = localStorage.getItem("instantMemoryTimer");
+
+  if (savedTimer) {
+    window.selectedCountdownTime = Number(savedTimer);
+
+    timerButtons.forEach((button) => {
+      button.classList.toggle("active", button.dataset.timer === savedTimer);
+    });
+  }
+</script>
+</body>
+</html>

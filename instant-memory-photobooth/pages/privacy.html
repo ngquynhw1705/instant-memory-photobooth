@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>Chính sách riêng tư | Instant Memory</title>
+
+  <meta
+    name="description"
+    content="Chính sách riêng tư của Instant Memory - website chụp ảnh photobooth trực tuyến, xử lý ảnh trên trình duyệt và tôn trọng quyền riêng tư của người dùng."
+  />
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link href="../assets/icons/logotrangchu.png" rel="icon" />
+  <link href="../src/css/main.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", Arial, sans-serif;
+      background: linear-gradient(180deg, #fff5f8 0%, #ffe9f1 100%);
+      color: #171717;
+    }
+
+    a,
+    button,
+    .home-nav,
+    .policy-card,
+    .privacy-btn {
+      font-family: "Roboto", Arial, sans-serif !important;
+    }
+
+    /* ===== MENU GIỐNG TRANG GIỚI THIỆU ===== */
+    #nav-links .home-nav,
+    #hamburger-nav .home-nav {
+      position: relative;
+      font-family: "Roboto", Arial, sans-serif !important;
+      font-size: 16px;
+      font-weight: 600;
+      color: #8c8c8c;
+      letter-spacing: 0;
+      text-transform: none;
+      transition: all 0.25s ease;
+    }
+
+    #nav-links .home-nav:hover,
+    #hamburger-nav .home-nav:hover {
+      color: #ff5f8f;
+      transform: translateY(-2px);
+    }
+
+    #nav-links .privacy-active,
+    #hamburger-nav .privacy-active {
+      color: #ff6f93 !important;
+      font-weight: 800;
+    }
+
+    #nav-links .privacy-active::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      width: 36px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff8fb0, #ff2f7d);
+      transform: translateX(-50%);
+    }
+
+    /* ===== LOGO NAVBAR ===== */
+    #logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 185px;
+      height: 80px;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .home-logo img {
+      max-width: 100%;
+      max-height: 72px;
+      object-fit: contain;
+      display: block;
+      transform: scale(1.45);
+      transform-origin: center;
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+    }
+
+    /* ===== PRIVACY PAGE ===== */
+    .privacy-page {
+      max-width: 1280px;
+      margin: 48px auto 80px;
+      padding: 0 28px;
+    }
+
+    .privacy-container {
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(255, 120, 160, 0.22);
+      border-radius: 34px;
+      padding: 52px;
+      box-shadow: 0 22px 48px rgba(255, 105, 150, 0.13);
+      backdrop-filter: blur(14px);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+      color: #ff4f86;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-5px);
+      color: #ff0f72;
+    }
+
+    .privacy-title {
+      margin: 0 0 16px;
+      font-size: 54px;
+      line-height: 1.05;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #101010;
+    }
+
+    .privacy-intro {
+      max-width: 950px;
+      font-size: 19px;
+      line-height: 1.85;
+      margin: 0 0 34px;
+      color: #333;
+    }
+
+    .pink-text {
+      color: #ff2f7d;
+      font-weight: 800;
+    }
+
+    .privacy-hero {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 34px;
+      align-items: center;
+      margin-top: 22px;
+    }
+
+    .privacy-hero-box {
+      background: linear-gradient(135deg, #ffffff, #fff5f8);
+      border: 1px solid rgba(255, 120, 160, 0.18);
+      border-radius: 28px;
+      padding: 34px;
+    }
+
+    .privacy-hero-box h2,
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 31px;
+      color: #111;
+    }
+
+    .privacy-hero-box p,
+    .privacy-section p {
+      margin: 0 0 14px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: #343434;
+    }
+
+    .privacy-visual {
+      background: #ffe1eb;
+      border-radius: 30px;
+      padding: 24px;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s ease;
+    }
+
+    .privacy-visual:hover {
+      transform: translateY(-8px) rotate(1deg);
+      box-shadow: 0 22px 45px rgba(255, 70, 130, 0.18);
+    }
+
+    .privacy-phone {
+      width: 250px;
+      min-height: 320px;
+      border-radius: 34px;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 24px 45px rgba(0, 0, 0, 0.13);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .phone-top {
+      width: 76px;
+      height: 8px;
+      border-radius: 99px;
+      background: #ffd1df;
+      margin: 0 auto 18px;
+    }
+
+    .privacy-lock {
+      width: 76px;
+      height: 76px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #ff7aa8, #ff0f72);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      margin: 18px auto;
+      box-shadow: 0 14px 28px rgba(255, 15, 114, 0.28);
+    }
+
+    .phone-line {
+      height: 12px;
+      border-radius: 99px;
+      background: #ffe0ea;
+      margin: 14px 0;
+    }
+
+    .phone-line.short {
+      width: 68%;
+    }
+
+    .phone-line.medium {
+      width: 84%;
+    }
+
+    .phone-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .phone-photo {
+      height: 76px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ffd5e2, #ff8fb0);
+    }
+
+    .phone-photo:nth-child(2) {
+      background: linear-gradient(135deg, #eeeeee, #cfcfcf);
+    }
+
+    .phone-photo:nth-child(3) {
+      background: linear-gradient(135deg, #ffbad0, #fff1f6);
+    }
+
+    .phone-photo:nth-child(4) {
+      background: linear-gradient(135deg, #222, #999);
+    }
+
+    .privacy-section {
+      margin-top: 58px;
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 22px;
+    }
+
+    .policy-card {
+      background: #fff;
+      border: 1px solid rgba(255, 90, 140, 0.17);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 14px 30px rgba(255, 105, 150, 0.08);
+      transition: 0.28s ease;
+    }
+
+    .policy-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(255, 80, 135, 0.16);
+      border-color: rgba(255, 47, 125, 0.4);
+    }
+
+    .policy-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 23px;
+      margin-bottom: 14px;
+    }
+
+    .policy-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #111;
+    }
+
+    .policy-card p {
+      margin: 0;
+      font-size: 15.5px;
+      line-height: 1.65;
+      color: #555;
+    }
+
+    .info-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .info-box {
+      background: linear-gradient(135deg, #fff, #fff6f9);
+      border: 1px solid rgba(255, 90, 140, 0.17);
+      border-radius: 26px;
+      padding: 28px;
+      transition: 0.28s ease;
+    }
+
+    .info-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 34px rgba(255, 80, 135, 0.14);
+    }
+
+    .info-box h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      color: #ff2f7d;
+    }
+
+    .info-box ul {
+      padding-left: 22px;
+      margin: 0;
+    }
+
+    .info-box li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #444;
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 0.9fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .privacy-image {
+      position: relative;
+      min-height: 300px;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #fff0f5;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+    }
+
+    .privacy-image:hover {
+      transform: translateY(-8px) scale(1.015);
+      box-shadow: 0 26px 50px rgba(255, 80, 135, 0.2);
+    }
+
+    .privacy-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .image-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(10px);
+      color: #ff2f7d;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .privacy-strip {
+      min-height: 300px;
+      background: linear-gradient(180deg, #fff 0%, #ffe6ef 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    .safe-card {
+      width: 220px;
+      border-radius: 26px;
+      background: white;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 20px 38px rgba(0, 0, 0, 0.13);
+    }
+
+    .safe-card-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      margin: 0 auto 16px;
+    }
+
+    .safe-card h3 {
+      margin: 0 0 10px;
+      color: #111;
+      font-size: 20px;
+    }
+
+    .safe-card p {
+      margin: 0;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: #555;
+    }
+
+    .notice-box {
+      margin-top: 24px;
+      background: linear-gradient(135deg, #fff, #ffe5ee);
+      border: 1px solid rgba(255, 90, 140, 0.2);
+      border-radius: 26px;
+      padding: 30px;
+    }
+
+    .notice-box strong {
+      color: #ff2f7d;
+    }
+
+    .cta-box {
+      margin-top: 58px;
+      padding: 46px 32px;
+      border-radius: 34px;
+      text-align: center;
+      color: white;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.35), transparent 34%),
+        linear-gradient(135deg, #ff8fb0 0%, #ff2f7d 55%, #ff0f72 100%);
+      box-shadow: 0 22px 48px rgba(255, 47, 125, 0.28);
+    }
+
+    .cta-box h2 {
+      margin: 0 0 14px;
+      font-size: 34px;
+      font-weight: 900;
+      font-family: "Roboto", Arial, sans-serif !important;
+    }
+
+    .cta-box p {
+      max-width: 740px;
+      margin: 0 auto 26px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .privacy-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 38px;
+      min-width: 210px;
+      border-radius: 999px;
+      border: none;
+      background: #ffffff;
+      color: #ff0f72 !important;
+      font-size: 16px;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow:
+        0 14px 30px rgba(255, 15, 114, 0.28),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .privacy-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255, 47, 125, 0.16), transparent);
+      transform: translateX(-100%);
+      transition: 0.55s ease;
+    }
+
+    .privacy-btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    .privacy-btn:hover {
+      transform: translateY(-5px) scale(1.03);
+      background: linear-gradient(135deg, #ffffff, #fff1f6);
+      box-shadow:
+        0 20px 42px rgba(255, 15, 114, 0.38),
+        inset 0 0 0 1px rgba(255, 120, 170, 0.35);
+    }
+
+    .btn-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      color: #fff;
+      font-size: 15px;
+      box-shadow: 0 8px 18px rgba(255, 15, 114, 0.28);
+    }
+
+    @media screen and (max-width: 1024px) {
+      .privacy-hero,
+      .policy-grid,
+      .info-list,
+      .image-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .privacy-strip {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .privacy-page {
+        margin: 28px auto 60px;
+        padding: 0 18px;
+      }
+
+      .privacy-container {
+        padding: 32px 22px;
+        border-radius: 26px;
+      }
+
+      .privacy-title {
+        font-size: 40px;
+      }
+
+      .privacy-intro {
+        font-size: 16.5px;
+      }
+
+      .privacy-hero,
+      .policy-grid,
+      .info-list,
+      .image-row {
+        grid-template-columns: 1fr;
+      }
+
+      .privacy-image img,
+      .privacy-image {
+        min-height: 240px;
+        height: auto;
+      }
+
+      .home-logo {
+        width: 135px;
+        height: 58px;
+      }
+
+      .home-logo img {
+        max-height: 50px;
+        transform: scale(1.25);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Thanh thông báo giống trang chủ -->
+  <section id="header-announcement">
+    <div id="announcement-holder">
+      <p class="lightgraytext" id="header-announcement-text">
+        <a href="https://www.instagram.com/ngquynhw_/" target="_blank">
+          Theo dõi chúng tôi trên Instagram @InstantMemory
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Header / Menu giống trang giới thiệu -->
+  <header id="main-header">
+    <nav id="new-navbar">
+      <div id="logo-container">
+        <a class="home-logo" href="../index.html" aria-label="Instant Memory">
+          <img src="../assets/icons/logotrangchu.png" alt="Instant Memory Logo" />
+        </a>
+      </div>
+
+      <div id="nav-links">
+        <ul>
+          <li>
+            <a class="home-nav" href="../index.html">trang chủ</a>
+          </li>
+          <li>
+            <a class="home-nav" href="about.html">giới thiệu</a>
+          </li>
+          <li>
+            <a class="home-nav current-nav privacy-active" href="privacy.html">chính sách riêng tư</a>
+          </li>
+          <li>
+            <a class="home-nav" href="spotlight.html">nổi bật</a>
+          </li>
+          <li>
+            <a class="home-nav" href="contact.html">liên hệ</a>
+          </li>
+          <li>
+            <a class="home-nav" href="choose-layout.html">chọn bố cục</a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="right-section">
+        <div id="github-container">
+          <a href="https://github.com/judiemosinabre" target="_blank">
+            <img
+              alt="github"
+              class="s-icons-size github-icon"
+              src="../assets/icons/github-icon.webp"
+            />
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <button id="hamburger-home-trigger">
+      <img alt="menu" id="hamburger-icon" src="../assets/icons/hamburger-icon.webp" />
+    </button>
+
+    <div id="hamburger-nav">
+      <button id="hamburgerBtn">
+        <img alt="menu" id="hamburger-icon" src="../assets/icons/hamburger-icon.webp" />
+      </button>
+
+      <ul>
+        <li>
+          <img alt="home icon" class="nav-icons" src="../assets/icons/home-icon.webp" />
+          <a class="home-nav" href="../index.html">trang chủ</a>
+        </li>
+
+        <li>
+          <img alt="about icon" class="nav-icons" src="../assets/icons/about-icon.webp" />
+          <a class="home-nav" href="about.html">giới thiệu</a>
+        </li>
+
+        <li>
+          <img alt="privacy icon" class="nav-icons" src="../assets/icons/privacy-icon.webp" />
+          <a class="home-nav current-nav privacy-active" href="privacy.html">chính sách riêng tư</a>
+        </li>
+
+        <li>
+          <img alt="star icon" class="nav-icons" src="../assets/icons/star-icon.webp" />
+          <a class="home-nav" href="spotlight.html">nổi bật</a>
+        </li>
+
+        <li>
+          <img alt="contact icon" class="nav-icons" src="../assets/icons/contact-icon.webp" />
+          <a class="home-nav" href="contact.html">liên hệ</a>
+        </li>
+
+        <li>
+          <img alt="layout icon" class="nav-icons" src="../assets/icons/layout-icon.webp" />
+          <a class="home-nav" href="choose-layout.html">chọn bố cục</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="privacy-page">
+    <section class="privacy-container">
+      <a class="back-link" href="../index.html">← Instant Memory</a>
+
+      <h1 class="privacy-title">Chính sách riêng tư</h1>
+
+      <p class="privacy-intro">
+        <strong>Instant Memory</strong> được xây dựng với mục tiêu mang đến trải nghiệm
+        <span class="pink-text">chụp ảnh photobooth trực tuyến</span> vui vẻ, dễ dùng và an toàn.
+        Trang này giải thích cách website xử lý camera, ảnh chụp, quyền riêng tư và những thông tin
+        liên quan đến trải nghiệm của bạn khi sử dụng Instant Memory.
+      </p>
+
+      <div class="privacy-hero">
+        <div class="privacy-hero-box">
+          <h2>Quyền riêng tư được đặt ngay từ thiết kế</h2>
+
+          <p>
+            Khi sử dụng Instant Memory, bạn có thể chọn bố cục ảnh, bật camera, chụp ảnh,
+            chỉnh màu, thêm khung và tải ảnh về thiết bị. Các thao tác chính được thiết kế
+            để diễn ra trực tiếp trên trình duyệt, giúp người dùng cảm thấy chủ động và thoải mái hơn.
+          </p>
+
+          <p>
+            Website không yêu cầu bạn tạo tài khoản để sử dụng chức năng chụp ảnh cơ bản.
+            Bạn cũng không cần cung cấp thông tin cá nhân như họ tên, số điện thoại hoặc địa chỉ
+            để bắt đầu trải nghiệm photobooth.
+          </p>
+        </div>
+
+        <div class="privacy-visual">
+          <div class="privacy-phone">
+            <div class="phone-top"></div>
+            <div class="privacy-lock">🔒</div>
+            <div class="phone-line medium"></div>
+            <div class="phone-line short"></div>
+            <div class="phone-photo-grid">
+              <div class="phone-photo"></div>
+              <div class="phone-photo"></div>
+              <div class="phone-photo"></div>
+              <div class="phone-photo"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="privacy-section">
+        <h2 class="section-title">Những nguyên tắc riêng tư của Instant Memory</h2>
+
+        <div class="policy-grid">
+          <div class="policy-card">
+            <div class="policy-icon">📷</div>
+            <h3>Camera do bạn cho phép</h3>
+            <p>
+              Website chỉ có thể sử dụng camera khi bạn bấm cho phép trên trình duyệt.
+              Bạn có thể tắt quyền camera bất cứ lúc nào trong phần cài đặt của trình duyệt.
+            </p>
+          </div>
+
+          <div class="policy-card">
+            <div class="policy-icon">🖼️</div>
+            <h3>Ảnh do bạn kiểm soát</h3>
+            <p>
+              Bạn là người quyết định lúc nào chụp, ảnh nào được giữ lại, ảnh nào được tải về
+              và ảnh nào được chia sẻ với người khác.
+            </p>
+          </div>
+
+          <div class="policy-card">
+            <div class="policy-icon">🌐</div>
+            <h3>Không cần đăng nhập</h3>
+            <p>
+              Các chức năng cơ bản của Instant Memory không yêu cầu tài khoản, giúp hạn chế
+              việc thu thập thông tin cá nhân không cần thiết.
+            </p>
+          </div>
+
+          <div class="policy-card">
+            <div class="policy-icon">⚙️</div>
+            <h3>Xử lý trên trình duyệt</h3>
+            <p>
+              Các thao tác như xem camera, chụp ảnh, ghép ảnh và tùy chỉnh giao diện ảnh
+              được thiết kế để xử lý ngay trên thiết bị của bạn.
+            </p>
+          </div>
+
+          <div class="policy-card">
+            <div class="policy-icon">💾</div>
+            <h3>Lưu ảnh về thiết bị</h3>
+            <p>
+              Ảnh hoàn chỉnh sau khi chỉnh sửa sẽ được tải về thiết bị theo lựa chọn của bạn.
+              Website không tự động lưu ảnh thay bạn.
+            </p>
+          </div>
+
+          <div class="policy-card">
+            <div class="policy-icon">💗</div>
+            <h3>Trải nghiệm an toàn</h3>
+            <p>
+              Instant Memory hướng đến một không gian chụp ảnh nhẹ nhàng, vui vẻ và tôn trọng
+              quyền riêng tư của người dùng.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="privacy-section">
+        <h2 class="section-title">Website có thể sử dụng những gì?</h2>
+
+        <div class="info-list">
+          <div class="info-box">
+            <h3>1. Quyền truy cập camera</h3>
+            <ul>
+              <li>
+                Camera chỉ được bật khi bạn chủ động cho phép trình duyệt truy cập.
+              </li>
+              <li>
+                Quyền camera dùng để hiển thị hình ảnh trực tiếp trong khung chụp.
+              </li>
+              <li>
+                Bạn có thể tắt camera bằng cách đóng trang, đổi quyền trong trình duyệt
+                hoặc không cấp quyền ngay từ đầu.
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>2. Ảnh chụp và ảnh tải lên</h3>
+            <ul>
+              <li>
+                Ảnh được dùng để tạo thành phẩm photobooth theo layout bạn đã chọn.
+              </li>
+              <li>
+                Ảnh có thể được chỉnh màu, thêm khung, thêm sticker hoặc ghép thành dải ảnh.
+              </li>
+              <li>
+                Bạn là người quyết định tải ảnh về máy hoặc không lưu lại ảnh đó.
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>3. Dữ liệu trình duyệt</h3>
+            <ul>
+              <li>
+                Trình duyệt có thể ghi nhớ một số trạng thái hiển thị để website hoạt động mượt hơn.
+              </li>
+              <li>
+                Một số thư viện giao diện hoặc hiệu ứng có thể được dùng để tạo trải nghiệm đẹp hơn.
+              </li>
+              <li>
+                Instant Memory không yêu cầu bạn nhập thông tin cá nhân để chụp ảnh.
+              </li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>4. Liên kết ngoài</h3>
+            <ul>
+              <li>
+                Website có thể chứa liên kết đến Instagram, GitHub hoặc các trang tham khảo khác.
+              </li>
+              <li>
+                Khi rời khỏi Instant Memory, chính sách của trang bên ngoài sẽ được áp dụng.
+              </li>
+              <li>
+                Bạn nên kiểm tra kỹ trang đích trước khi chia sẻ thông tin cá nhân ở bên ngoài.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="privacy-section">
+        <h2 class="section-title">Hình ảnh minh họa</h2>
+
+        <p>
+          Những hình ảnh dưới đây mô tả tinh thần của Instant Memory: chụp ảnh nhanh,
+          lưu giữ kỷ niệm, tự chọn ảnh và tự quyết định cách chia sẻ.
+        </p>
+
+       
+      </section>
+
+      <section class="privacy-section">
+        <h2 class="section-title">Chúng tôi không khuyến khích điều gì?</h2>
+
+        <div class="notice-box">
+          <p>
+            <strong>Instant Memory</strong> được tạo ra để lưu giữ kỷ niệm tích cực.
+            Người dùng không nên sử dụng website để tạo, lưu hoặc chia sẻ hình ảnh làm ảnh hưởng
+            đến quyền riêng tư, danh dự hoặc sự an toàn của người khác.
+          </p>
+
+          <p>
+            Khi chụp ảnh cùng bạn bè, gia đình hoặc người khác, bạn nên hỏi ý kiến họ trước khi
+            lưu ảnh hoặc đăng tải lên mạng xã hội. Việc tôn trọng sự đồng ý của người trong ảnh
+            là một phần quan trọng của trải nghiệm chụp ảnh văn minh.
+          </p>
+        </div>
+      </section>
+
+      <section class="privacy-section">
+        <h2 class="section-title">Quyền lựa chọn của bạn</h2>
+
+        <div class="info-list">
+          <div class="info-box">
+            <h3>Bạn có thể</h3>
+            <ul>
+              <li>Cho phép hoặc từ chối quyền camera.</li>
+              <li>Chụp lại ảnh nếu chưa hài lòng với kết quả.</li>
+              <li>Tải ảnh về thiết bị sau khi hoàn tất chỉnh sửa.</li>
+              <li>Đóng website bất cứ lúc nào khi không muốn tiếp tục sử dụng.</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3>Bạn nên</h3>
+            <ul>
+              <li>Kiểm tra ánh sáng và không gian xung quanh trước khi chụp.</li>
+              <li>Không chia sẻ ảnh của người khác khi chưa có sự đồng ý.</li>
+              <li>Chỉ lưu những hình ảnh bạn thật sự muốn giữ lại.</li>
+              <li>Dùng trình duyệt và thiết bị cá nhân để đảm bảo riêng tư hơn.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="privacy-section">
+        <h2 class="section-title">Cập nhật chính sách</h2>
+
+        <div class="notice-box">
+          <p>
+            Chính sách riêng tư có thể được cập nhật khi website thêm tính năng mới,
+            thay đổi giao diện hoặc cải thiện trải nghiệm người dùng. Khi có thay đổi,
+            nội dung trên trang này sẽ được chỉnh sửa để người dùng dễ theo dõi.
+          </p>
+
+          <p>
+            Phiên bản hiện tại tập trung vào trải nghiệm photobooth trực tuyến cơ bản:
+            chọn bố cục, chụp ảnh, chỉnh ảnh và tải ảnh về thiết bị.
+          </p>
+        </div>
+      </section>
+
+      <div class="cta-box">
+        <h2>Trải nghiệm chụp ảnh an toàn và vui vẻ</h2>
+        <p>
+          Instant Memory giúp bạn lưu giữ kỷ niệm theo cách nhẹ nhàng, hiện đại và tôn trọng
+          quyền riêng tư của chính bạn.
+        </p>
+
+        <a class="privacy-btn" href="start.html">
+          <span>Chụp ảnh ngay</span>
+          <span class="btn-icon">📷</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="../src/js/main.js"></script>
+</body>
+</html>

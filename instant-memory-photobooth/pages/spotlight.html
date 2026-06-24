@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>Khoảnh khắc nổi bật | Instant Memory</title>
+
+  <meta
+    name="description"
+    content="Khám phá những khoảnh khắc nổi bật tại Instant Memory - nơi lưu giữ các bộ ảnh photobooth đáng yêu, tự nhiên và đầy cảm xúc."
+  />
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link href="../assets/icons/logotrangchu.png" rel="icon" />
+  <link href="../src/css/main.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 12%, rgba(255, 143, 176, 0.35), transparent 26%),
+        radial-gradient(circle at 85% 18%, rgba(255, 210, 225, 0.75), transparent 30%),
+        linear-gradient(180deg, #fff5f8 0%, #ffe9f1 100%);
+      color: #171717;
+    }
+
+    a,
+    button,
+    .home-nav {
+      font-family: "Roboto", Arial, sans-serif !important;
+    }
+
+    /* ===== MENU GIỐNG TRANG GIỚI THIỆU ===== */
+    #nav-links .home-nav,
+    #hamburger-nav .home-nav {
+      position: relative;
+      font-size: 16px;
+      font-weight: 600;
+      color: #8c8c8c;
+      letter-spacing: 0;
+      text-transform: none;
+      transition: all 0.25s ease;
+    }
+
+    #nav-links .home-nav:hover,
+    #hamburger-nav .home-nav:hover {
+      color: #ff5f8f;
+      transform: translateY(-2px);
+    }
+
+    #nav-links .spotlight-active,
+    #hamburger-nav .spotlight-active {
+      color: #ff6f93 !important;
+      font-weight: 800;
+    }
+
+    #nav-links .spotlight-active::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      width: 32px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff8fb0, #ff2f7d);
+      transform: translateX(-50%);
+    }
+
+    /* ===== LOGO NAVBAR ===== */
+    #logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 185px;
+      height: 80px;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .home-logo img {
+      max-width: 100%;
+      max-height: 72px;
+      object-fit: contain;
+      display: block;
+      transform: scale(1.45);
+      transform-origin: center;
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+    }
+
+    /* ===== SPOTLIGHT PAGE ===== */
+    .spotlight-page {
+      max-width: 1320px;
+      margin: 46px auto 80px;
+      padding: 0 28px;
+    }
+
+    .spotlight-shell {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 120, 160, 0.22);
+      border-radius: 36px;
+      padding: 50px;
+      box-shadow: 0 24px 55px rgba(255, 105, 150, 0.14);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: #ff4f86;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-5px);
+      color: #ff0f72;
+    }
+
+    .spotlight-hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 42px;
+      align-items: center;
+      min-height: 520px;
+    }
+
+    .spotlight-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #fff0f5;
+      color: #ff2f7d;
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 47, 125, 0.16);
+    }
+
+   .spotlight-title {
+  margin: 0 0 18px;
+  font-family: "Roboto", Arial, sans-serif !important;
+  font-size: 58px;
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  color: #111;
+
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.spotlight-title .title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.spotlight-title .pink-title {
+  color: #ff2f7d;
+}
+
+    .spotlight-desc {
+      max-width: 660px;
+      font-size: 18px;
+      line-height: 1.85;
+      color: #343434;
+      margin: 0 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .primary-btn,
+    .outline-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 28px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 900;
+      text-decoration: none;
+      overflow: hidden;
+      transition: 0.28s ease;
+    }
+
+    .primary-btn {
+      color: white;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      box-shadow: 0 16px 32px rgba(255, 47, 125, 0.32);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-4px) scale(1.03);
+      box-shadow: 0 22px 42px rgba(255, 47, 125, 0.42);
+    }
+
+    .outline-btn {
+      color: #ff2f7d;
+      background: white;
+      border: 1px solid rgba(255, 47, 125, 0.22);
+    }
+
+    .outline-btn:hover {
+      transform: translateY(-4px);
+      background: #fff3f7;
+    }
+
+    .memory-stage {
+      position: relative;
+      min-height: 520px;
+      border-radius: 36px;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(255, 47, 125, 0.22), transparent 36%),
+        linear-gradient(135deg, #fff5f8, #ffdce8);
+      overflow: hidden;
+      border: 1px solid rgba(255, 120, 160, 0.18);
+    }
+
+    .floating-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.55);
+      filter: blur(1px);
+    }
+
+    .circle-1 {
+      width: 170px;
+      height: 170px;
+      left: -40px;
+      top: 60px;
+    }
+
+    .circle-2 {
+      width: 230px;
+      height: 230px;
+      right: -70px;
+      bottom: -40px;
+    }
+
+    .polaroid {
+      position: absolute;
+      width: 210px;
+      background: white;
+      padding: 12px 12px 44px;
+      border-radius: 10px;
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.14);
+      transition: 0.35s ease;
+    }
+
+    .polaroid:hover {
+      transform: translateY(-12px) rotate(0deg) scale(1.04) !important;
+      z-index: 5;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      border-radius: 6px;
+      filter: grayscale(0.1) contrast(1.02);
+    }
+
+    .polaroid span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 14px;
+      text-align: center;
+      color: #ff2f7d;
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .photo-a {
+      left: 70px;
+      top: 70px;
+      transform: rotate(-7deg);
+    }
+
+    .photo-b {
+      right: 62px;
+      top: 115px;
+      transform: rotate(8deg);
+    }
+
+    .photo-c {
+      left: 205px;
+      bottom: 55px;
+      transform: rotate(2deg);
+      width: 190px;
+    }
+
+    .mini-strip {
+      position: absolute;
+      right: 175px;
+      bottom: 52px;
+      width: 120px;
+      background: #fff;
+      border-radius: 10px;
+      padding: 9px;
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.16);
+      transform: rotate(-5deg);
+      transition: 0.3s ease;
+    }
+
+    .mini-strip:hover {
+      transform: rotate(2deg) scale(1.08);
+    }
+
+    .mini-photo {
+      height: 68px;
+      border-radius: 5px;
+      margin-bottom: 7px;
+      background: linear-gradient(135deg, #cfcfcf, #777);
+    }
+
+    .mini-photo:nth-child(2) {
+      background: linear-gradient(135deg, #ffd2df, #777);
+    }
+
+    .mini-photo:nth-child(3) {
+      background: linear-gradient(135deg, #fff1f6, #aaa);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 46px;
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 26px;
+      padding: 24px;
+      border: 1px solid rgba(255, 90, 140, 0.16);
+      box-shadow: 0 14px 30px rgba(255, 105, 150, 0.08);
+      transition: 0.28s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 40px rgba(255, 80, 135, 0.16);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 34px;
+      font-weight: 1000;
+      color: #ff2f7d;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: #555;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .section-block {
+      margin-top: 64px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 38px;
+      color: #111;
+    }
+
+    .section-note {
+      max-width: 430px;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* ===== BENTO GALLERY ===== */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.9fr 0.9fr;
+      grid-template-rows: 260px 260px;
+      gap: 20px;
+    }
+
+    .bento-item {
+      position: relative;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #fff0f5;
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.09);
+      transition: 0.32s ease;
+    }
+
+    .bento-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 26px 52px rgba(255, 80, 135, 0.2);
+    }
+
+    .bento-large {
+      grid-row: span 2;
+    }
+
+    .bento-wide {
+      grid-column: span 2;
+    }
+
+    .bento-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: 0.4s ease;
+    }
+
+    .bento-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .bento-overlay {
+      position: absolute;
+      inset: auto 18px 18px 18px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(12px);
+    }
+
+    .bento-overlay h3 {
+      margin: 0 0 6px;
+      font-size: 20px;
+      color: #111;
+    }
+
+    .bento-overlay p {
+      margin: 0;
+      color: #555;
+      font-size: 14.5px;
+      line-height: 1.55;
+    }
+
+    .bento-pink {
+      padding: 30px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.45), transparent 34%),
+        linear-gradient(135deg, #ff85b0, #ff0f72);
+      color: white;
+    }
+
+    .bento-pink h3 {
+      margin: 0 0 12px;
+      font-size: 28px;
+    }
+
+    .bento-pink p {
+      margin: 0;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .topic-card {
+      position: relative;
+      min-height: 230px;
+      border-radius: 28px;
+      padding: 26px;
+      background: white;
+      border: 1px solid rgba(255, 90, 140, 0.16);
+      box-shadow: 0 16px 32px rgba(255, 105, 150, 0.08);
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .topic-card::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: -50px;
+      bottom: -50px;
+      border-radius: 50%;
+      background: rgba(255, 47, 125, 0.09);
+    }
+
+    .topic-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 47, 125, 0.4);
+      box-shadow: 0 22px 44px rgba(255, 80, 135, 0.16);
+    }
+
+    .topic-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+
+    .topic-card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+      color: #111;
+      position: relative;
+      z-index: 2;
+    }
+
+    .topic-card p {
+      margin: 0;
+      color: #555;
+      line-height: 1.65;
+      font-size: 15.5px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 25px;
+      top: 20px;
+      bottom: 20px;
+      width: 3px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ff8fb0, #ff0f72);
+    }
+
+    .timeline-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .timeline-dot {
+      position: relative;
+      z-index: 2;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: white;
+      color: #ff2f7d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 1000;
+      box-shadow: 0 12px 26px rgba(255, 80, 135, 0.18);
+      border: 3px solid #ff8fb0;
+    }
+
+    .timeline-content {
+      background: #fff;
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid rgba(255, 90, 140, 0.16);
+      transition: 0.28s ease;
+    }
+
+    .timeline-content:hover {
+      transform: translateX(8px);
+      box-shadow: 0 18px 34px rgba(255, 80, 135, 0.14);
+    }
+
+    .timeline-content h3 {
+      margin: 0 0 8px;
+      color: #111;
+      font-size: 21px;
+    }
+
+    .timeline-content p {
+      margin: 0;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .cta-panel {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: 1fr 0.78fr;
+      gap: 24px;
+      align-items: center;
+      padding: 42px;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.35), transparent 34%),
+        linear-gradient(135deg, #ff8fb0 0%, #ff2f7d 55%, #ff0f72 100%);
+      color: white;
+      box-shadow: 0 24px 50px rgba(255, 47, 125, 0.28);
+    }
+
+    .cta-panel h2 {
+      margin: 0 0 12px;
+      font-size: 38px;
+      line-height: 1.15;
+    }
+
+    .cta-panel p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .cta-side {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .shoot-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 38px;
+      min-width: 210px;
+      border-radius: 999px;
+      background: white;
+      color: #ff0f72 !important;
+      font-size: 16px;
+      font-weight: 900;
+      text-decoration: none;
+      box-shadow: 0 16px 34px rgba(255, 15, 114, 0.32);
+      overflow: hidden;
+      transition: 0.3s ease;
+    }
+
+    .shoot-btn:hover {
+      transform: translateY(-5px) scale(1.03);
+      background: #fff3f7;
+    }
+
+    .shoot-btn span:last-child {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      color: white;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media screen and (max-width: 1100px) {
+      .spotlight-hero,
+      .cta-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .memory-stage {
+        min-height: 560px;
+      }
+
+      .stats-row,
+      .topic-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .bento-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+
+      .bento-large,
+      .bento-wide {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .bento-item {
+        min-height: 300px;
+      }
+
+      .cta-side {
+        justify-content: flex-start;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .spotlight-page {
+        margin: 28px auto 60px;
+        padding: 0 18px;
+      }
+
+      .spotlight-shell {
+        padding: 32px 22px;
+        border-radius: 28px;
+      }
+
+      .spotlight-title {
+        font-size: 42px;
+      }
+
+      .spotlight-desc {
+        font-size: 16.5px;
+      }
+
+      .memory-stage {
+        min-height: 500px;
+      }
+
+      .polaroid {
+        width: 160px;
+      }
+
+      .polaroid img {
+        height: 200px;
+      }
+
+      .photo-a {
+        left: 28px;
+        top: 52px;
+      }
+
+      .photo-b {
+        right: 28px;
+        top: 115px;
+      }
+
+      .photo-c {
+        left: 90px;
+        bottom: 50px;
+      }
+
+      .mini-strip {
+        display: none;
+      }
+
+      .stats-row,
+      .topic-grid,
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-title {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 58px 1fr;
+      }
+
+      .home-logo {
+        width: 135px;
+        height: 58px;
+      }
+
+      .home-logo img {
+        max-height: 50px;
+        transform: scale(1.25);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Thanh thông báo giống trang chủ -->
+  <section id="header-announcement">
+    <div id="announcement-holder">
+      <p class="lightgraytext" id="header-announcement-text">
+        <a href="https://www.instagram.com/ngquynhw_/" target="_blank">
+          Theo dõi chúng tôi trên Instagram @InstantMemory
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Header / Menu giữ nguyên định dạng -->
+  <header id="main-header">
+    <nav id="new-navbar">
+      <div id="logo-container">
+        <a class="home-logo" href="../index.html" aria-label="Instant Memory">
+          <img src="../assets/icons/logotrangchu.png" alt="Instant Memory Logo" />
+        </a>
+      </div>
+
+      <div id="nav-links">
+        <ul>
+          <li>
+            <a class="home-nav" href="../index.html">trang chủ</a>
+          </li>
+          <li>
+            <a class="home-nav" href="about.html">giới thiệu</a>
+          </li>
+          <li>
+            <a class="home-nav" href="privacy.html">chính sách riêng tư</a>
+          </li>
+          <li>
+            <a class="home-nav current-nav spotlight-active" href="spotlight.html">nổi bật</a>
+          </li>
+          <li>
+            <a class="home-nav" href="contact.html">liên hệ</a>
+          </li>
+          <li>
+            <a class="home-nav" href="choose-layout.html">chọn bố cục</a>
+          </li>
+        </ul>
+      </div>
+
+      <div id="right-section">
+        <div id="github-container">
+          <a href="https://github.com/judiemosinabre" target="_blank">
+            <img
+              alt="github"
+              class="s-icons-size github-icon"
+              src="../assets/icons/github-icon.webp"
+            />
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <button id="hamburger-home-trigger">
+      <img alt="menu" id="hamburger-icon" src="../assets/icons/hamburger-icon.webp" />
+    </button>
+
+    <div id="hamburger-nav">
+      <button id="hamburgerBtn">
+        <img alt="menu" id="hamburger-icon" src="../assets/icons/hamburger-icon.webp" />
+      </button>
+
+      <ul>
+        <li>
+          <img alt="home icon" class="nav-icons" src="../assets/icons/home-icon.webp" />
+          <a class="home-nav" href="../index.html">trang chủ</a>
+        </li>
+
+        <li>
+          <img alt="about icon" class="nav-icons" src="../assets/icons/about-icon.webp" />
+          <a class="home-nav" href="about.html">giới thiệu</a>
+        </li>
+
+        <li>
+          <img alt="privacy icon" class="nav-icons" src="../assets/icons/privacy-icon.webp" />
+          <a class="home-nav" href="privacy.html">chính sách riêng tư</a>
+        </li>
+
+        <li>
+          <img alt="star icon" class="nav-icons" src="../assets/icons/star-icon.webp" />
+          <a class="home-nav current-nav spotlight-active" href="spotlight.html">nổi bật</a>
+        </li>
+
+        <li>
+          <img alt="contact icon" class="nav-icons" src="../assets/icons/contact-icon.webp" />
+          <a class="home-nav" href="contact.html">liên hệ</a>
+        </li>
+
+        <li>
+          <img alt="layout icon" class="nav-icons" src="../assets/icons/layout-icon.webp" />
+          <a class="home-nav" href="choose-layout.html">chọn bố cục</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="spotlight-page">
+    <section class="spotlight-shell">
+      <a class="back-link" href="../index.html">← Instant Memory</a>
+
+      <section class="spotlight-hero">
+        <div>
+          <div class="spotlight-badge">✨ Khoảnh khắc được yêu thích</div>
+
+          <h1 class="spotlight-title">
+            Khoảnh khắc <span>nổi bật</span>
+          </h1>
+
+          <p class="spotlight-desc">
+            Đây là nơi Instant Memory lưu lại tinh thần của những bộ ảnh photobooth đáng nhớ:
+            những biểu cảm tự nhiên, những tấm ảnh hơi ngẫu hứng, những khung hình dễ thương
+            và những câu chuyện nhỏ được giữ lại bằng hình ảnh.
+          </p>
+
+          <p class="spotlight-desc">
+            Mỗi khoảnh khắc không cần phải hoàn hảo. Chỉ cần thật, vui và có cảm xúc,
+            nó đã đủ để trở thành một phần kỷ niệm đáng giữ lại.
+          </p>
+
+          <div class="hero-actions">
+            <a class="primary-btn" href="choose-layout.html">Tạo khoảnh khắc mới 📷</a>
+            <a class="outline-btn" href="#memory-board">Xem bộ sưu tập</a>
+          </div>
+        </div>
+
+        <div class="memory-stage">
+          <div class="floating-circle circle-1"></div>
+          <div class="floating-circle circle-2"></div>
+
+          <div class="polaroid photo-a">
+            <img src="../assets/spotlight/week7/week7.6.webp" alt="Khoảnh khắc photobooth 1" />
+            <span>soft memory</span>
+          </div>
+
+          <div class="polaroid photo-b">
+            <img src="../assets/spotlight/week7/week7.7.webp" alt="Khoảnh khắc photobooth 2" />
+            <span>tiny story</span>
+          </div>
+
+          <div class="polaroid photo-c">
+            <img src="../assets/spotlight/week7/week7.8.webp" alt="Khoảnh khắc photobooth 3" />
+            <span>best shot</span>
+          </div>
+
+          
+        </div>
+      </section>
+
+      <section class="stats-row">
+        <div class="stat-card">
+          <span class="stat-number">04</span>
+          <span class="stat-label">bước đơn giản để tạo một bộ ảnh photobooth hoàn chỉnh</span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number">3+</span>
+          <span class="stat-label">phong cách khung ảnh phù hợp với nhiều mood khác nhau</span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number">0</span>
+          <span class="stat-label">tài khoản bắt buộc, mở trình duyệt là có thể sử dụng</span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-number">∞</span>
+          <span class="stat-label">kỷ niệm nhỏ có thể được lưu giữ theo cách riêng của bạn</span>
+        </div>
+      </section>
+
+      <section class="section-block" id="memory-board">
+        <div class="section-heading">
+          <h2 class="section-title">Bảng kỷ niệm</h2>
+          <p class="section-note">
+            Bố cục dạng bento giúp các khoảnh khắc được trình bày sinh động hơn,
+            giống một bảng cảm hứng nhỏ dành cho photobooth.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-item bento-large">
+            <img src="../assets/spotlight/week7/week7.8.webp" alt="Ảnh nổi bật lớn" />
+            <div class="bento-overlay">
+              <h3>Khoảnh khắc tự nhiên</h3>
+              <p>Những tấm ảnh đẹp nhất thường đến từ biểu cảm thật nhất.</p>
+            </div>
+          </div>
+
+          <div class="bento-item bento-pink">
+          	<img src="../assets/spotlight/week7/week7.10.webp" alt="Ảnh nổi bật lớn" />
+            <h3>Memory note</h3>
+            <p>
+              Một buổi chụp ảnh nhỏ có thể biến thành kỷ niệm lớn khi bạn lưu lại đúng khoảnh khắc.
+            </p>
+          </div>
+
+          <div class="bento-item">
+            <img src="../assets/spotlight/week7/week7.4.webp" alt="Ảnh nổi bật 2" />
+            <div class="bento-overlay">
+              <h3>Vintage mood</h3>
+              <p>Màu ảnh nhẹ, cảm giác cũ và gần gũi.</p>
+            </div>
+          </div>
+
+          <div class="bento-item bento-wide">
+            <img src="../assets/spotlight/week7/week7.9.webp" alt="Ảnh nổi bật " />
+            <div class="bento-overlay">
+              <h3>Photobooth vibe</h3>
+              <p>Ghép ảnh, chọn khung, thêm filter và lưu lại theo phong cách của riêng bạn.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2 class="section-title">Chủ đề nổi bật</h2>
+          <p class="section-note">
+            Mỗi bộ ảnh có thể mang một cảm xúc riêng: vui vẻ, dịu dàng, cá tính hoặc hoài niệm.
+          </p>
+        </div>
+
+        <div class="topic-grid">
+          <div class="topic-card">
+            <div class="topic-icon">💗</div>
+            <h3>Soft & Lovely</h3>
+            <p>
+              Phù hợp với những bộ ảnh nhẹ nhàng, màu hồng ngọt, biểu cảm tự nhiên và dễ thương.
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <div class="topic-icon">🎞️</div>
+            <h3>Vintage Booth</h3>
+            <p>
+              Tông ảnh hơi cũ, có cảm giác giống film, thích hợp với những kỷ niệm mang màu hoài niệm.
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <div class="topic-icon">✨</div>
+            <h3>Bestie Moment</h3>
+            <p>
+              Dành cho nhóm bạn muốn tạo nhiều dáng vui, nhí nhố và giữ lại những khoảnh khắc thân quen.
+            </p>
+          </div>
+
+          <div class="topic-card">
+            <div class="topic-icon">📷</div>
+            <h3>Clean Studio</h3>
+            <p>
+              Bố cục đơn giản, tập trung vào gương mặt, ánh sáng và sự rõ ràng của từng khung hình.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-heading">
+          <h2 class="section-title">Hành trình tạo một khoảnh khắc</h2>
+          <p class="section-note">
+            Từ lúc chọn layout đến khi tải ảnh, mỗi bước đều góp phần tạo nên một bộ ảnh hoàn chỉnh.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">1</div>
+            <div class="timeline-content">
+              <h3>Chọn mood ảnh</h3>
+              <p>
+                Trước khi chụp, bạn có thể chọn cảm giác mình muốn: đáng yêu, nhẹ nhàng,
+                cá tính, tự nhiên hoặc hơi vintage.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">2</div>
+            <div class="timeline-content">
+              <h3>Căn góc và ánh sáng</h3>
+              <p>
+                Một góc chụp rõ mặt, ánh sáng vừa đủ và background gọn sẽ giúp ảnh photobooth
+                trông đẹp hơn mà không cần chỉnh sửa quá nhiều.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">3</div>
+            <div class="timeline-content">
+              <h3>Tạo dáng thật tự nhiên</h3>
+              <p>
+                Đừng quá căng thẳng khi chụp. Những dáng cười, nháy mắt, che mặt hoặc tạo dáng bất ngờ
+                thường làm bộ ảnh có cảm xúc hơn.
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot">4</div>
+            <div class="timeline-content">
+              <h3>Lưu lại thành phẩm</h3>
+              <p>
+                Sau khi chọn filter, màu khung và sticker, bạn có thể tải ảnh về để lưu giữ,
+                đăng mạng xã hội hoặc in ra làm kỷ niệm.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-panel">
+        <div>
+          <h2>Tạo bộ ảnh nổi bật của riêng bạn</h2>
+          <p>
+            Một vài giây chụp ảnh có thể trở thành một kỷ niệm rất lâu.
+            Hãy chọn bố cục yêu thích và bắt đầu tạo dải ảnh Instant Memory ngay bây giờ.
+          </p>
+        </div>
+
+        <div class="cta-side">
+          <a class="shoot-btn" href="start.html">
+            <span>Chụp ảnh ngay</span>
+            <span>📷</span>
+          </a>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../src/js/main.js"></script>
+</body>
+</html>

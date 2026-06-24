@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <title>Chọn bố cục | Instant Memory</title>
+
+  <meta
+    name="description"
+    content="Chọn bố cục chụp ảnh photobooth tại Instant Memory: dải 3 ảnh, dải 4 ảnh, layout trái tim, vintage và lưới 2x2."
+  />
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link href="../assets/icons/logotrangchu.png" rel="icon" />
+  <link href="../src/css/main.css" rel="stylesheet" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Roboto", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 12%, rgba(255, 143, 176, 0.34), transparent 28%),
+        radial-gradient(circle at 86% 16%, rgba(255, 220, 232, 0.8), transparent 32%),
+        linear-gradient(180deg, #fff5f8 0%, #ffe9f1 100%);
+      color: #171717;
+    }
+
+    a,
+    button,
+    p,
+    h1,
+    h2,
+    h3,
+    span,
+    .home-nav {
+      font-family: "Roboto", Arial, sans-serif !important;
+    }
+
+    /* ===== MENU GIỐNG CÁC TRANG KHÁC ===== */
+    #nav-links .home-nav,
+    #hamburger-nav .home-nav {
+      position: relative;
+      font-size: 16px;
+      font-weight: 600;
+      color: #8c8c8c;
+      letter-spacing: 0;
+      text-transform: none;
+      transition: all 0.25s ease;
+    }
+
+    #nav-links .home-nav:hover,
+    #hamburger-nav .home-nav:hover {
+      color: #ff5f8f;
+      transform: translateY(-2px);
+    }
+
+    #nav-links .layout-active,
+    #hamburger-nav .layout-active {
+      color: #ff6f93 !important;
+      font-weight: 800;
+    }
+
+    #nav-links .layout-active::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -9px;
+      width: 36px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff8fb0, #ff2f7d);
+      transform: translateX(-50%);
+    }
+
+    /* ===== LOGO NAVBAR ===== */
+    #logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .home-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 185px;
+      height: 80px;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .home-logo img {
+      max-width: 100%;
+      max-height: 72px;
+      object-fit: contain;
+      display: block;
+      transform: scale(1.45);
+      transform-origin: center;
+      mix-blend-mode: multiply;
+      opacity: 0.9;
+    }
+
+    /* ===== CHOOSE LAYOUT PAGE ===== */
+    .choose-page {
+      max-width: 1320px;
+      margin: 46px auto 80px;
+      padding: 0 28px;
+    }
+
+    .choose-shell {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(255, 120, 160, 0.22);
+      border-radius: 36px;
+      padding: 50px;
+      box-shadow: 0 24px 55px rgba(255, 105, 150, 0.14);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: #ff4f86;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-5px);
+      color: #ff0f72;
+    }
+
+    .choose-hero {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 42px;
+      align-items: center;
+      margin-bottom: 58px;
+    }
+
+    .choose-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: #fff0f5;
+      color: #ff2f7d;
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255, 47, 125, 0.16);
+    }
+
+    .choose-title {
+      margin: 0 0 18px;
+      font-size: clamp(42px, 5vw, 64px);
+      line-height: 1.08;
+      font-weight: 950;
+      letter-spacing: -1.6px;
+      color: #111;
+    }
+
+    .choose-title span {
+      display: block;
+      color: #ff2f7d;
+    }
+
+    .choose-desc {
+      max-width: 720px;
+      font-size: 18px;
+      line-height: 1.85;
+      color: #343434;
+      margin: 0 0 26px;
+    }
+
+    .hero-mini-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+      max-width: 690px;
+    }
+
+    .mini-info-card {
+      background: #fff;
+      border: 1px solid rgba(255, 90, 140, 0.16);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 12px 26px rgba(255, 105, 150, 0.08);
+    }
+
+    .mini-info-card strong {
+      display: block;
+      color: #ff2f7d;
+      font-size: 23px;
+      font-weight: 950;
+      margin-bottom: 5px;
+    }
+
+    .mini-info-card span {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .hero-preview {
+      min-height: 470px;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at center, rgba(255, 47, 125, 0.22), transparent 35%),
+        linear-gradient(135deg, #fff5f8, #ffdce8);
+      border: 1px solid rgba(255, 120, 160, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-photo {
+      position: absolute;
+      width: 185px;
+      background: #fff;
+      padding: 10px 10px 38px;
+      border-radius: 12px;
+      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.14);
+      transition: 0.3s ease;
+    }
+
+    .floating-photo:hover {
+      transform: translateY(-10px) rotate(0deg) scale(1.04) !important;
+      z-index: 5;
+    }
+
+    .floating-photo img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .floating-photo span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 12px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 900;
+      color: #ff2f7d;
+    }
+
+    .float-a {
+      left: 52px;
+      top: 62px;
+      transform: rotate(-7deg);
+    }
+
+    .float-b {
+      right: 55px;
+      top: 92px;
+      transform: rotate(7deg);
+    }
+
+    .hero-frame-sample {
+      position: absolute;
+      left: 50%;
+      bottom: 46px;
+      transform: translateX(-50%) rotate(1deg);
+      width: 175px;
+      height: 270px;
+      background: #fff;
+      padding: 12px;
+      border-radius: 18px;
+      box-shadow: 0 20px 42px rgba(0, 0, 0, 0.16);
+      transition: 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-frame-sample:hover {
+      transform: translateX(-50%) translateY(-10px) rotate(-2deg) scale(1.05);
+    }
+
+    .hero-frame-sample img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 26px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 36px;
+      color: #111;
+      letter-spacing: -0.8px;
+    }
+
+    .section-note {
+      max-width: 500px;
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    .layout-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 26px;
+      padding: 18px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 90, 140, 0.14);
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .filter-pill {
+      border: none;
+      border-radius: 999px;
+      padding: 11px 18px;
+      background: #fff8fb;
+      color: #777;
+      font-size: 14px;
+      font-weight: 850;
+      cursor: pointer;
+      transition: 0.25s ease;
+      border: 1px solid rgba(255, 90, 140, 0.16);
+    }
+
+    .filter-pill:hover,
+    .filter-pill.active {
+      color: #fff;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(255, 47, 125, 0.22);
+    }
+
+    .layout-tip {
+      color: #ff2f7d;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .layout-card {
+      position: relative;
+      background: #fff;
+      border-radius: 32px;
+      padding: 24px;
+      border: 1px solid rgba(255, 90, 140, 0.17);
+      box-shadow: 0 18px 38px rgba(255, 105, 150, 0.1);
+      transition: 0.3s ease;
+      overflow: hidden;
+    }
+
+    .layout-card::before {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: rgba(255, 47, 125, 0.08);
+    }
+
+    .layout-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 58px rgba(255, 80, 135, 0.2);
+      border-color: rgba(255, 47, 125, 0.38);
+    }
+
+    .layout-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .layout-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: #fff0f5;
+      color: #ff2f7d;
+      font-size: 12px;
+      font-weight: 950;
+      border: 1px solid rgba(255, 47, 125, 0.12);
+    }
+
+    .layout-shot {
+      color: #999;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .layout-preview-box {
+      position: relative;
+      min-height: 360px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at center, rgba(255, 47, 125, 0.12), transparent 40%),
+        linear-gradient(135deg, #fff6f9, #ffe1eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      padding: 26px;
+      overflow: hidden;
+    }
+
+    .frame-sample {
+      width: 230px;
+      height: 310px;
+      border-radius: 24px;
+      background: #fff;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.14);
+      transition: 0.3s ease;
+    }
+
+    .layout-card:hover .frame-sample {
+      transform: translateY(-8px) rotate(-2deg) scale(1.04);
+    }
+
+    .frame-sample-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .frame-sample.grid-frame {
+      width: 280px;
+      height: 280px;
+    }
+
+    .layout-name {
+      margin: 0 0 8px;
+      font-size: 22px;
+      color: #111;
+      font-weight: 950;
+      position: relative;
+      z-index: 2;
+    }
+
+    .layout-description {
+      margin: 0 0 20px;
+      color: #666;
+      font-size: 15px;
+      line-height: 1.65;
+      position: relative;
+      z-index: 2;
+    }
+
+    .select-layout-btn {
+      width: 100%;
+      border: none;
+      border-radius: 999px;
+      padding: 15px 22px;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      color: white;
+      font-size: 15px;
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 16px 32px rgba(255, 47, 125, 0.26);
+      transition: 0.28s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .select-layout-btn:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 22px 42px rgba(255, 47, 125, 0.38);
+    }
+
+    .how-to-section {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .how-to-title-box {
+      padding: 38px;
+      border-radius: 34px;
+      color: white;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.34), transparent 34%),
+        linear-gradient(135deg, #ff8fb0 0%, #ff2f7d 55%, #ff0f72 100%);
+      box-shadow: 0 24px 50px rgba(255, 47, 125, 0.25);
+    }
+
+    .how-to-title-box h2 {
+      margin: 0 0 14px;
+      font-size: 36px;
+      line-height: 1.15;
+    }
+
+    .how-to-title-box p {
+      margin: 0;
+      font-size: 16.5px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .steps-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 22px;
+      border-radius: 26px;
+      background: #fff;
+      border: 1px solid rgba(255, 90, 140, 0.16);
+      box-shadow: 0 14px 30px rgba(255, 105, 150, 0.08);
+      transition: 0.28s ease;
+    }
+
+    .step-item:hover {
+      transform: translateX(8px);
+      box-shadow: 0 18px 36px rgba(255, 80, 135, 0.14);
+    }
+
+    .step-number {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 950;
+      font-size: 20px;
+    }
+
+    .step-item h3 {
+      margin: 0 0 7px;
+      font-size: 20px;
+      color: #111;
+    }
+
+    .step-item p {
+      margin: 0;
+      color: #555;
+      line-height: 1.65;
+      font-size: 15.5px;
+    }
+
+    @media screen and (max-width: 1100px) {
+      .choose-hero,
+      .how-to-section {
+        grid-template-columns: 1fr;
+      }
+
+      .layout-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-preview {
+        min-height: 520px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .choose-page {
+        margin: 28px auto 60px;
+        padding: 0 18px;
+      }
+
+      .choose-shell {
+        padding: 32px 22px;
+        border-radius: 28px;
+      }
+
+      .choose-title {
+        font-size: 40px;
+        letter-spacing: -0.8px;
+      }
+
+      .choose-desc {
+        font-size: 16.5px;
+      }
+
+      .hero-mini-info,
+      .layout-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-title {
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+
+      .hero-preview {
+        min-height: 500px;
+      }
+
+      .floating-photo {
+        width: 145px;
+      }
+
+      .floating-photo img {
+        height: 180px;
+      }
+
+      .float-a {
+        left: 24px;
+        top: 56px;
+      }
+
+      .float-b {
+        right: 24px;
+        top: 125px;
+      }
+
+      .hero-frame-sample {
+        width: 145px;
+        height: 230px;
+        bottom: 48px;
+      }
+
+      .layout-preview-box {
+        min-height: 300px;
+      }
+
+      .frame-sample {
+        width: 210px;
+        height: 290px;
+      }
+
+      .frame-sample.grid-frame {
+        width: 240px;
+        height: 240px;
+      }
+
+      .home-logo {
+        width: 135px;
+        height: 58px;
+      }
+
+      .home-logo img {
+        max-height: 50px;
+        transform: scale(1.25);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section id="header-announcement">
+    <div id="announcement-holder">
+      <p class="lightgraytext" id="header-announcement-text">
+        <a href="https://www.instagram.com/ngquynhw_/" target="_blank">
+          Theo dõi chúng tôi trên Instagram @InstantMemory
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <header id="main-header">
+    <nav id="new-navbar">
+      <div id="logo-container">
+        <a class="home-logo" href="../index.html" aria-label="Instant Memory">
+          <img src="../assets/icons/logotrangchu.png" alt="Instant Memory Logo" />
+        </a>
+      </div>
+
+      <div id="nav-links">
+        <ul>
+          <li><a class="home-nav" href="../index.html">trang chủ</a></li>
+          <li><a class="home-nav" href="about.html">giới thiệu</a></li>
+          <li><a class="home-nav" href="privacy.html">chính sách riêng tư</a></li>
+          <li><a class="home-nav" href="spotlight.html">nổi bật</a></li>
+          <li><a class="home-nav" href="contact.html">liên hệ</a></li>
+          <li><a class="home-nav current-nav layout-active" href="choose-layout.html">chọn bố cục</a></li>
+        </ul>
+      </div>
+
+      <div id="right-section">
+        <div id="github-container">
+          <a href="https://github.com/judiemosinabre" target="_blank">
+            <img
+              alt="github"
+              class="s-icons-size github-icon"
+              src="../assets/icons/github-icon.webp"
+            />
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <button id="hamburger-home-trigger">
+      <img alt="menu" id="hamburger-icon" src="../assets/icons/hamburger-icon.webp" />
+    </button>
+
+    <div id="hamburger-nav">
+      <button id="hamburgerBtn">
+        <img alt="menu" id="hamburger-icon" src="../assets/icons/hamburger-icon.webp" />
+      </button>
+
+      <ul>
+        <li>
+          <img alt="home icon" class="nav-icons" src="../assets/icons/home-icon.webp" />
+          <a class="home-nav" href="../index.html">trang chủ</a>
+        </li>
+
+        <li>
+          <img alt="about icon" class="nav-icons" src="../assets/icons/about-icon.webp" />
+          <a class="home-nav" href="about.html">giới thiệu</a>
+        </li>
+
+        <li>
+          <img alt="privacy icon" class="nav-icons" src="../assets/icons/privacy-icon.webp" />
+          <a class="home-nav" href="privacy.html">chính sách riêng tư</a>
+        </li>
+
+        <li>
+          <img alt="star icon" class="nav-icons" src="../assets/icons/star-icon.webp" />
+          <a class="home-nav" href="spotlight.html">nổi bật</a>
+        </li>
+
+        <li>
+          <img alt="contact icon" class="nav-icons" src="../assets/icons/contact-icon.webp" />
+          <a class="home-nav" href="contact.html">liên hệ</a>
+        </li>
+
+        <li>
+          <img alt="layout icon" class="nav-icons" src="../assets/icons/layout-icon.webp" />
+          <a class="home-nav current-nav layout-active" href="choose-layout.html">chọn bố cục</a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="choose-page">
+    <section class="choose-shell">
+      <a class="back-link" href="../index.html">← Instant Memory</a>
+
+      <section class="choose-hero">
+        <div>
+          <div class="choose-badge">📸 Bắt đầu tạo dải ảnh của bạn</div>
+
+          <h1 class="choose-title">
+            Chọn bố cục
+            <span>photobooth</span>
+          </h1>
+
+          <p class="choose-desc">
+            Mỗi bố cục sẽ mang một cảm giác khác nhau cho bộ ảnh của bạn.
+            Bạn có thể chọn dải ảnh 3 pose nhẹ nhàng, 4 pose vui hơn, phong cách vintage,
+            trái tim đáng yêu hoặc lưới 2×2 hiện đại.
+          </p>
+
+          <p class="choose-desc">
+            Sau khi chọn bố cục, hệ thống sẽ chuyển bạn đến phòng chụp.
+            Tại đó bạn có thể bật camera, tạo dáng, chụp ảnh, chọn màu khung,
+            thêm hiệu ứng và tải ảnh về thiết bị.
+          </p>
+
+          <div class="hero-mini-info">
+            <div class="mini-info-card">
+              <strong>3–4</strong>
+              <span>số lượt chụp tùy layout</span>
+            </div>
+
+            <div class="mini-info-card">
+              <strong>5+</strong>
+              <span>phong cách khung ảnh</span>
+            </div>
+
+            <div class="mini-info-card">
+              <strong>1</strong>
+              <span>nút chọn để vào phòng chụp</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-preview">
+          <div class="floating-photo float-a">
+            <img src="../assets/spotlight/week7/week7.1.webp" alt="Ảnh minh họa 1" />
+            <span>soft booth</span>
+          </div>
+
+          <div class="floating-photo float-b">
+            <img src="../assets/spotlight/week7/week7.2.webp" alt="Ảnh minh họa 2" />
+            <span>vintage mood</span>
+          </div>
+
+          <div class="hero-frame-sample">
+            <img src="../assets/spotlight/week7/week7.6.webp" alt="Frame mẫu photobooth" />
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-heading">
+          <h2 class="section-title">Bộ sưu tập bố cục</h2>
+          <p class="section-note">
+            Chọn layout phù hợp với mood ảnh của bạn. Các bố cục dưới đây sẽ được gửi sang trang studio.
+          </p>
+        </div>
+
+        <div class="layout-toolbar">
+          <div class="filter-pills">
+            <button class="filter-pill active" type="button" data-filter="all">Tất cả</button>
+            <button class="filter-pill" type="button" data-filter="strip">Dải ảnh</button>
+            <button class="filter-pill" type="button" data-filter="cute">Dễ thương</button>
+            <button class="filter-pill" type="button" data-filter="vintage">Vintage</button>
+            <button class="filter-pill" type="button" data-filter="grid">Lưới ảnh</button>
+          </div>
+
+          <div class="layout-tip">
+            Chọn một bố cục để bắt đầu chụp ảnh ✨
+          </div>
+        </div>
+
+        <div class="layout-grid" id="layoutGrid">
+          <article class="layout-card" data-category="strip">
+            <div class="layout-card-top">
+              <span class="layout-badge">TRY IT NOW</span>
+              <span class="layout-shot">3 pose</span>
+            </div>
+
+            <div class="layout-preview-box">
+              <div class="frame-sample">
+                <img
+                  class="frame-sample-img"
+                  src="../assets/spotlight/week7/week7.6.webp"
+                  alt="Layout A frame sample"
+                />
+              </div>
+            </div>
+
+            <h3 class="layout-name">Layout A</h3>
+            <p class="layout-description">
+              Dải ảnh 3 pose, phù hợp cho ảnh cá nhân hoặc chụp nhanh với phong cách tối giản.
+            </p>
+
+            <button
+              class="select-layout-btn"
+              type="button"
+              data-shots="3"
+              data-layout="strip"
+              data-frame="classic"
+            >
+              Chọn bố cục này 📷
+            </button>
+          </article>
+
+          <article class="layout-card" data-category="strip cute">
+            <div class="layout-card-top">
+              <span class="layout-badge">POPULAR</span>
+              <span class="layout-shot">4 pose</span>
+            </div>
+
+            <div class="layout-preview-box">
+              <div class="frame-sample">
+                <img
+                  class="frame-sample-img"
+                  src="../assets/spotlight/week7/week7.7.webp"
+                  alt="Layout B frame sample"
+                />
+              </div>
+            </div>
+
+            <h3 class="layout-name">Layout B</h3>
+            <p class="layout-description">
+              Dải ảnh 4 pose màu hồng nhẹ, hợp với nhóm bạn, cặp đôi hoặc ảnh dễ thương.
+            </p>
+
+            <button
+              class="select-layout-btn"
+              type="button"
+              data-shots="4"
+              data-layout="strip"
+              data-frame="pink"
+            >
+              Chọn bố cục này 💗
+            </button>
+          </article>
+
+          <article class="layout-card" data-category="strip cute">
+            <div class="layout-card-top">
+              <span class="layout-badge">NEW LAYOUT</span>
+              <span class="layout-shot">4 pose</span>
+            </div>
+
+            <div class="layout-preview-box">
+              <div class="frame-sample">
+                <img
+                  class="frame-sample-img"
+                  src="../assets/spotlight/week7/week7.8.webp"
+                  alt="Hearts frame sample"
+                />
+              </div>
+            </div>
+
+            <h3 class="layout-name">Hearts Filter</h3>
+            <p class="layout-description">
+              Khung ảnh trái tim đáng yêu, phù hợp với ảnh ngọt ngào, nhẹ nhàng và nổi bật.
+            </p>
+
+            <button
+              class="select-layout-btn"
+              type="button"
+              data-shots="4"
+              data-layout="strip"
+              data-frame="hearts"
+            >
+              Chọn bố cục này ♡
+            </button>
+          </article>
+
+          <article class="layout-card" data-category="strip cute">
+            <div class="layout-card-top">
+              <span class="layout-badge">CUTE</span>
+              <span class="layout-shot">4 pose</span>
+            </div>
+
+            <div class="layout-preview-box">
+              <div class="frame-sample">
+                <img
+                  class="frame-sample-img"
+                  src="../assets/spotlight/week7/week7.4.webp"
+                  alt="Dog frame sample"
+                />
+              </div>
+            </div>
+
+            <h3 class="layout-name">Dog Filter</h3>
+            <p class="layout-description">
+              Layout vui nhộn, hợp với những bộ ảnh tinh nghịch, đáng yêu và có cảm giác gần gũi.
+            </p>
+
+            <button
+              class="select-layout-btn"
+              type="button"
+              data-shots="4"
+              data-layout="strip"
+              data-frame="dog"
+            >
+              Chọn bố cục này 🐶
+            </button>
+          </article>
+
+          <article class="layout-card" data-category="strip vintage">
+            <div class="layout-card-top">
+              <span class="layout-badge">VINTAGE</span>
+              <span class="layout-shot">4 pose</span>
+            </div>
+
+            <div class="layout-preview-box">
+              <div class="frame-sample">
+                <img
+                  class="frame-sample-img"
+                  src="../assets/spotlight/week7/week7.10.webp"
+                  alt="Vintage frame sample"
+                />
+              </div>
+            </div>
+
+            <h3 class="layout-name">Vintage Layout</h3>
+            <p class="layout-description">
+              Tông ảnh hơi cũ, hợp với cảm giác film, hoài niệm và những bộ ảnh có chiều sâu.
+            </p>
+
+            <button
+              class="select-layout-btn"
+              type="button"
+              data-shots="4"
+              data-layout="strip"
+              data-frame="vintage"
+            >
+              Chọn bố cục này 🎞️
+            </button>
+          </article>
+
+          <article class="layout-card" data-category="grid">
+            <div class="layout-card-top">
+              <span class="layout-badge">MODERN</span>
+              <span class="layout-shot">4 pose</span>
+            </div>
+
+            <div class="layout-preview-box">
+              <div class="frame-sample grid-frame">
+                <img
+                  class="frame-sample-img"
+                  src="../assets/spotlight/week7/week7.5.webp"
+                  alt="Grid frame sample"
+                />
+              </div>
+            </div>
+
+            <h3 class="layout-name">2 × 2 Grid</h3>
+            <p class="layout-description">
+              Bố cục vuông 2×2 hiện đại, phù hợp để đăng mạng xã hội hoặc lưu làm ảnh kỷ niệm.
+            </p>
+
+            <button
+              class="select-layout-btn"
+              type="button"
+              data-shots="4"
+              data-layout="grid"
+              data-frame="classic"
+            >
+              Chọn bố cục này ✨
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section class="how-to-section">
+        <div class="how-to-title-box">
+          <h2>Cách chọn bố cục phù hợp</h2>
+          <p>
+            Bạn không cần chọn quá phức tạp. Hãy chọn theo cảm giác của bộ ảnh:
+            muốn nhanh thì chọn 3 pose, muốn nhiều biểu cảm hơn thì chọn 4 pose,
+            muốn đăng mạng xã hội thì chọn layout lưới.
+          </p>
+        </div>
+
+        <div class="steps-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div>
+              <h3>Chọn kiểu ảnh</h3>
+              <p>Chọn dải ảnh dọc, khung dễ thương, vintage hoặc lưới ảnh tùy phong cách bạn muốn.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div>
+              <h3>Vào phòng chụp</h3>
+              <p>Sau khi bấm chọn, website sẽ chuyển sang studio để bật camera và bắt đầu chụp.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div>
+              <h3>Chỉnh ảnh và tải về</h3>
+              <p>Bạn có thể chọn filter, màu khung, sticker rồi lưu ảnh hoàn chỉnh về thiết bị.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../src/js/main.js"></script>
+
+  <script>
+    const layoutButtons = document.querySelectorAll(".select-layout-btn");
+
+    layoutButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const query = new URLSearchParams({
+          shots: button.dataset.shots,
+          layout: button.dataset.layout,
+          frame: button.dataset.frame
+        });
+
+        window.location.href = `studio.html?${query.toString()}`;
+      });
+    });
+
+    const filterButtons = document.querySelectorAll(".filter-pill");
+    const layoutCards = document.querySelectorAll(".layout-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        layoutCards.forEach((card) => {
+          const categories = card.dataset.category || "";
+
+          if (filter === "all" || categories.includes(filter)) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+/* Red and white Christmas theme with countdown styles */
+:root {
+  /* Christmas (kept for reference / future use) */
+  --christmas-red: #dc2626;
+  --christmas-dark-red: #991b1b;
+  --christmas-white: #ffffff;
+  --christmas-off-white: #fef2f2;
+  --christmas-light-red: #fee2e2;
+  --christmas-border: #fecaca;
+  --gray-text: #6b7280;
+
+  /* Pink theme */
+  --pink-text: #F26A8D;
+  --pink-light: #f6c9d2;
+  --pink-bg: #fff0f3;
+  --pink-border: #f6c9d2;
+  --pink-shadow: rgba(242, 106, 141, 0.15);
+  --pink-shadow-hover: rgba(242, 106, 141, 0.25);
+}
+
+/* Announcement section */
+#announcement-section {
+  max-width: 600px;
+  max-height: fit-content;
+  border: 2px solid var(--pink-border);
+  border-radius: 25px;
+  background: var(--christmas-white);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-size: 1rem;
+  z-index: 5;
+  box-shadow: 0 8px 24px var(--pink-shadow);
+  margin: 50px auto 0;
+  animation: pulse-border 2s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    box-shadow: 0 8px 24px var(--pink-shadow);
+  }
+  50% {
+    box-shadow: 0 8px 32px var(--pink-shadow-hover);
+  }
+}
+
+#christmas-icon-container {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--pink-bg);
+  border-radius: 50%;
+  animation: rotate-star 3s linear infinite;
+}
+
+@keyframes rotate-star {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#countdown-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#countdown-title {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--pink-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#countdown-timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.time-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--pink-text);
+  line-height: 1;
+  min-width: 48px;
+  text-align: center;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+.time-label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--gray-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.time-separator {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--pink-light);
+  margin: 0 -2px;
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+#countdown-message {
+  font-size: 0.875rem;
+  color: var(--gray-text);
+  font-weight: 500;
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 640px) {
+  #announcement-section {
+    max-width: 95%;
+    padding: 20px;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  #countdown-timer {
+    justify-content: center;
+  }
+
+  .time-value {
+    font-size: 1.5rem;
+    min-width: 40px;
+  }
+
+  .time-separator {
+    font-size: 1.25rem;
+  }
+}
+
+/* Header announcement styles */
+/* #header-announcement {
+  background: var(--christmas-red);
+  padding: 8px 16px;
+  text-align: center;
+}
+
+#header-announcement-text {
+  color: var(--christmas-white);
+  font-size: 0.875rem;
+}
+
+#header-announcement-text a {
+  color: var(--christmas-white);
+  text-decoration: none;
+}
+
+#header-announcement-text a:hover {
+  text-decoration: underline;
+} */

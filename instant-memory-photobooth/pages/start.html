@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Bắt đầu chụp ảnh | Instant Memory</title>
+
+  <link rel="icon" href="../assets/icons/logotrangchu.png" />
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800;900&display=swap"
+  rel="stylesheet"
+/>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Roboto", Arial, sans-serif;
+      color: #151515;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 143, 176, 0.32), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(255, 220, 232, 0.9), transparent 34%),
+        linear-gradient(180deg, #fff6f9 0%, #ffe7ef 100%);
+      overflow-x: hidden;
+    }
+
+    .start-page {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 34px 28px 70px;
+    }
+
+    .start-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 34px;
+    }
+
+  .brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 95px;
+  text-decoration: none;
+  border-radius: 24px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.brand img {
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+  filter: drop-shadow(0 6px 14px rgba(255, 105, 150, 0.10));
+}
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 90, 140, 0.18);
+      color: #ff2f7d;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(255, 105, 150, 0.12);
+      transition: 0.25s ease;
+    }
+
+    .back-home:hover {
+      transform: translateY(-3px);
+      background: #fff;
+      box-shadow: 0 18px 34px rgba(255, 80, 135, 0.18);
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 880px;
+      margin: 0 auto 44px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: #fff0f5;
+      color: #ff2f7d;
+      font-size: 14px;
+      font-weight: 900;
+      border: 1px solid rgba(255, 47, 125, 0.14);
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(40px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -2.2px;
+      font-weight: 950;
+      color: #111;
+    }
+
+    .hero-title span {
+      display: block;
+      color: #ff2f7d;
+    }
+
+    .hero-subtitle {
+      max-width: 760px;
+      margin: 22px auto 0;
+      font-size: 18px;
+      line-height: 1.75;
+      color: #5d5d5d;
+    }
+
+    .studio-note {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .note-item {
+      padding: 11px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(255, 90, 140, 0.16);
+      color: #666;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .note-item strong {
+      color: #ff2f7d;
+    }
+
+    .slider-section {
+      position: relative;
+      margin-top: 34px;
+    }
+
+    .slider-shell {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+    }
+
+    .slider-btn {
+      flex: 0 0 auto;
+      width: 64px;
+      height: 64px;
+      border: none;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      color: white;
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 18px 36px rgba(255, 47, 125, 0.32);
+      transition: 0.25s ease;
+      z-index: 5;
+    }
+
+    .slider-btn:hover {
+      transform: translateY(-4px) scale(1.06);
+      box-shadow: 0 24px 48px rgba(255, 47, 125, 0.42);
+    }
+
+    .slider-btn:active {
+      transform: scale(0.96);
+    }
+
+    .layout-scroll {
+      flex: 1;
+      overflow-x: hidden;
+      overflow-y: visible;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding: 26px 4px 34px;
+    }
+
+    .layout-track {
+      display: flex;
+      gap: 32px;
+      width: max-content;
+    }
+
+    .layout-card {
+      flex: 0 0 350px;
+      scroll-snap-align: center;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(255, 90, 140, 0.18);
+      border-radius: 34px;
+      padding: 24px;
+      box-shadow: 0 20px 44px rgba(255, 105, 150, 0.13);
+      transition: 0.3s ease;
+    }
+
+    .layout-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(255, 47, 125, 0.4);
+      box-shadow: 0 30px 62px rgba(255, 80, 135, 0.22);
+    }
+
+    .layout-holder {
+      width: 100%;
+      min-height: 398px;
+      border: none;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at center, rgba(255, 47, 125, 0.12), transparent 42%),
+        linear-gradient(135deg, #fff7fa, #ffe2ec);
+      cursor: pointer;
+      position: relative;
+      padding: 34px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .layout-holder::before {
+      content: "";
+      position: absolute;
+      top: 16px;
+      left: 28px;
+      right: 28px;
+      height: 42px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.76);
+      transform: rotate(3deg);
+    }
+
+    .frame-badge {
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: #fff;
+      color: #ff2f7d;
+      font-size: 12px;
+      font-weight: 950;
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+    }
+
+    .frame-badge.try {
+      background: #fff7aa;
+    }
+
+    .frame-cover {
+      width: 240px;
+      height: 320px;
+      border-radius: 24px;
+      background: #fff;
+      padding: 12px;
+      box-shadow: 0 22px 42px rgba(0, 0, 0, 0.14);
+      transition: 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .frame-cover.grid-frame {
+      width: 275px;
+      height: 275px;
+    }
+
+    .frame-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .layout-card:hover .frame-cover {
+      transform: translateY(-8px) rotate(-2deg) scale(1.04);
+    }
+
+    .layout-info {
+      padding: 26px 8px 8px;
+      text-align: center;
+    }
+
+    .layout-name {
+      margin: 0 0 12px;
+      font-size: 26px;
+      font-weight: 950;
+      letter-spacing: -0.7px;
+      color: #111;
+    }
+
+    .layout-description {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    .layout-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 18px;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff85b0, #ff0f72);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 14px 28px rgba(255, 47, 125, 0.25);
+    }
+
+    .bottom-tip {
+      max-width: 760px;
+      margin: 28px auto 0;
+      text-align: center;
+      color: #777;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    @media screen and (max-width: 768px) {
+      .start-page {
+        padding: 24px 16px 56px;
+      }
+
+      .start-top {
+        margin-bottom: 26px;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .hero-title {
+        letter-spacing: -1.2px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .slider-shell {
+        gap: 8px;
+      }
+
+      .slider-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 32px;
+      }
+
+      .layout-card {
+        flex-basis: 285px;
+        padding: 18px;
+      }
+
+      .layout-holder {
+        min-height: 330px;
+        padding: 24px;
+      }
+
+      .frame-cover {
+        width: 205px;
+        height: 280px;
+      }
+
+      .frame-cover.grid-frame {
+        width: 225px;
+        height: 225px;
+      }
+
+      .layout-name {
+        font-size: 23px;
+      }
+    }
+
+    /* ===== FIX TIÊU ĐỀ MỀM HƠN + NHỎ LẠI ===== */
+.hero {
+  max-width: 820px !important;
+  margin: 0 auto 38px !important;
+  text-align: center !important;
+}
+
+.hero-badge {
+  font-family: "Quicksand", "Roboto", Arial, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  padding: 9px 18px !important;
+  margin-bottom: 20px !important;
+}
+
+.hero-title {
+  font-family: "Quicksand", "Roboto", Arial, sans-serif !important;
+  font-size: clamp(34px, 4.6vw, 56px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -1.2px !important;
+  font-weight: 800 !important;
+  color: #111 !important;
+}
+
+.hero-title span {
+  display: block;
+  color: #ff2f7d !important;
+}
+
+.hero-subtitle {
+  max-width: 680px !important;
+  margin: 18px auto 0 !important;
+  font-size: 16.5px !important;
+  line-height: 1.75 !important;
+  color: #666 !important;
+}
+
+/* ===== CHO CỤM CARD NẰM GIỮA WEB ===== */
+.slider-section {
+  max-width: 1120px !important;
+  margin: 34px auto 0 !important;
+}
+
+.slider-shell {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 18px !important;
+}
+
+.layout-scroll {
+  flex: 0 1 900px !important;
+  max-width: 900px !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+  scroll-behavior: smooth !important;
+  scroll-snap-type: x mandatory !important;
+  padding: 26px 0 34px !important;
+}
+
+/* Cho card đầu tiên cũng đứng giữa vùng trượt */
+.layout-track {
+  display: flex !important;
+  gap: 32px !important;
+  width: max-content !important;
+  padding-left: calc((900px - 350px) / 2) !important;
+  padding-right: calc((900px - 350px) / 2) !important;
+}
+
+/* Thanh cuộn nhìn gọn hơn */
+.layout-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.layout-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 160, 190, 0.18);
+  border-radius: 999px;
+}
+
+.layout-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ff8fb0, #ff2f7d);
+  border-radius: 999px;
+}
+
+/* Card chuyên nghiệp hơn */
+.layout-card {
+  flex: 0 0 350px !important;
+  scroll-snap-align: center !important;
+  border-radius: 34px !important;
+}
+
+.layout-name {
+  font-family: "Quicksand", "Roboto", Arial, sans-serif !important;
+  font-size: 25px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.4px !important;
+}
+
+.layout-description {
+  font-family: "Roboto", Arial, sans-serif !important;
+  font-size: 15.5px !important;
+  line-height: 1.7 !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .hero-title {
+    font-size: 34px !important;
+    letter-spacing: -0.6px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 15.5px !important;
+  }
+
+  .slider-section {
+    max-width: 100% !important;
+  }
+
+  .layout-scroll {
+    flex: 1 !important;
+    max-width: 100% !important;
+  }
+
+  .layout-track {
+    padding-left: calc((100vw - 285px) / 2) !important;
+    padding-right: calc((100vw - 285px) / 2) !important;
+    gap: 22px !important;
+  }
+
+  .layout-card {
+    flex-basis: 285px !important;
+  }
+}
+
+/* ===== CARD ẢNH PHOTObooth ĐẸP HƠN ===== */
+
+/* Khu vực chứa slider */
+.slider-section {
+  max-width: 1180px !important;
+  margin: 34px auto 0 !important;
+  padding: 18px 0 0 !important;
+}
+
+.slider-shell {
+  align-items: center !important;
+}
+
+/* Vùng trượt gọn và cân giữa */
+.layout-scroll {
+  max-width: 980px !important;
+  padding: 30px 0 42px !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+/* Track card */
+.layout-track {
+  gap: 34px !important;
+  padding-left: calc((980px - 340px) / 2) !important;
+  padding-right: calc((980px - 340px) / 2) !important;
+}
+
+/* Card tổng */
+.layout-card {
+  flex: 0 0 340px !important;
+  border-radius: 36px !important;
+  padding: 22px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.9)) !important;
+  border: 1px solid rgba(255, 128, 166, 0.28) !important;
+  box-shadow:
+    0 22px 45px rgba(255, 105, 150, 0.14),
+    inset 0 0 0 1px rgba(255,255,255,0.7) !important;
+  transition: transform 0.32s ease, box-shadow 0.32s ease, border-color 0.32s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Ánh sáng nhẹ phía sau card */
+.layout-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 143, 176, 0.22), transparent 42%);
+  opacity: 0;
+  transition: 0.32s ease;
+  pointer-events: none;
+}
+
+.layout-card:hover::before {
+  opacity: 1;
+}
+
+.layout-card:hover {
+  transform: translateY(-12px) scale(1.015) !important;
+  border-color: rgba(255, 47, 125, 0.42) !important;
+  box-shadow:
+    0 32px 70px rgba(255, 80, 135, 0.24),
+    inset 0 0 0 1px rgba(255,255,255,0.85) !important;
+}
+
+/* Khung chứa ảnh */
+.layout-holder {
+  min-height: 360px !important;
+  border-radius: 32px !important;
+  padding: 30px !important;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,230,239,0.9)),
+    radial-gradient(circle at 50% 45%, rgba(255, 47, 125, 0.13), transparent 42%) !important;
+  border: 1px solid rgba(255, 143, 176, 0.28) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.75),
+    0 18px 38px rgba(255, 105, 150, 0.12) !important;
+}
+
+/* Xóa cảm giác thanh trắng quá thô ở đầu card */
+.layout-holder::before {
+  height: 38px !important;
+  top: 18px !important;
+  left: 34px !important;
+  right: 34px !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  box-shadow: 0 10px 24px rgba(255, 105, 150, 0.08);
+}
+
+/* Badge trên ảnh */
+.frame-badge {
+  top: 24px !important;
+  padding: 8px 18px !important;
+  border-radius: 999px !important;
+  background: rgba(255,255,255,0.92) !important;
+  color: #ff2f7d !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 10px 22px rgba(255, 47, 125, 0.14) !important;
+  backdrop-filter: blur(10px);
+}
+
+.frame-badge.try {
+  background: #fff7ad !important;
+}
+
+/* Khung ảnh mẫu: chỉ 1 ảnh, rõ hơn */
+.frame-cover {
+  width: 230px !important;
+  height: 300px !important;
+  padding: 10px !important;
+  border-radius: 26px !important;
+  background: #ffffff !important;
+  box-shadow:
+    0 24px 45px rgba(0, 0, 0, 0.14),
+    inset 0 0 0 1px rgba(255,255,255,0.9) !important;
+  z-index: 3 !important;
+}
+
+.frame-cover.grid-frame {
+  width: 255px !important;
+  height: 255px !important;
+}
+
+.frame-cover img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 18px !important;
+  background: #fff !important;
+}
+
+/* Hover ảnh mẫu */
+.layout-card:hover .frame-cover {
+  transform: translateY(-8px) rotate(-1.5deg) scale(1.035) !important;
+}
+
+/* Phần chữ dưới ảnh */
+.layout-info {
+  padding: 24px 8px 8px !important;
+}
+
+.layout-name {
+  margin: 0 0 10px !important;
+  font-family: "Quicksand", "Roboto", Arial, sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.4px !important;
+  color: #111 !important;
+}
+
+.layout-description {
+  margin: 0 !important;
+  font-size: 15.5px !important;
+  line-height: 1.65 !important;
+  color: #666 !important;
+}
+
+/* Nút vào phòng chụp */
+.layout-action {
+  margin-top: 18px !important;
+  padding: 13px 24px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #ff7aa8, #ff0f72) !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  box-shadow: 0 14px 28px rgba(255, 47, 125, 0.28) !important;
+  transition: 0.25s ease !important;
+}
+
+.layout-card:hover .layout-action {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(255, 47, 125, 0.36) !important;
+}
+
+/* Card đang ở giữa nổi bật nhẹ */
+.layout-card.is-active {
+  transform: translateY(-8px) scale(1.025) !important;
+  border-color: rgba(255, 47, 125, 0.5) !important;
+  box-shadow:
+    0 34px 72px rgba(255, 80, 135, 0.25),
+    inset 0 0 0 1px rgba(255,255,255,0.9) !important;
+}
+
+/* Mũi tên đẹp hơn */
+.slider-btn {
+  width: 58px !important;
+  height: 58px !important;
+  font-size: 38px !important;
+  box-shadow: 0 18px 38px rgba(255, 47, 125, 0.32) !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .layout-track {
+    padding-left: calc((100vw - 285px) / 2) !important;
+    padding-right: calc((100vw - 285px) / 2) !important;
+    gap: 22px !important;
+  }
+
+  .layout-card {
+    flex-basis: 285px !important;
+    padding: 18px !important;
+  }
+
+  .layout-holder {
+    min-height: 320px !important;
+    padding: 24px !important;
+  }
+
+  .frame-cover {
+    width: 205px !important;
+    height: 270px !important;
+  }
+
+  .frame-cover.grid-frame {
+    width: 220px !important;
+    height: 220px !important;
+  }
+
+  .layout-name {
+    font-size: 22px !important;
+  }
+
+  .slider-btn {
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 32px !important;
+  }
+}
+
+/* ===== THU GỌN PHẦN ĐẦU TRANG START ===== */
+.start-page {
+  max-width: 1320px !important;
+  padding: 18px 28px 50px !important;
+}
+
+/* Logo - tiêu đề - nút về trang chủ nằm cùng hàng */
+.start-header-compact {
+  display: grid;
+  grid-template-columns: 170px 1fr 190px;
+  align-items: start;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Logo to hơn, chìm nền */
+.brand {
+  width: 155px !important;
+  height: 120px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.brand img {
+  width: 145px !important;
+  height: 145px !important;
+  object-fit: contain !important;
+  display: block !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.88 !important;
+  filter: saturate(0.95) drop-shadow(0 4px 10px rgba(255, 105, 150, 0.08)) !important;
+}
+
+/* Tiêu đề nhỏ lại, mềm hơn */
+.compact-hero {
+  max-width: 650px !important;
+  margin: 18px auto 0 !important;
+  text-align: center !important;
+}
+
+.hero-badge {
+  margin-bottom: 14px !important;
+  padding: 8px 16px !important;
+  font-size: 13px !important;
+  font-weight: 800 !important;
+}
+
+.hero-title {
+  font-family: "Quicksand", "Roboto", Arial, sans-serif !important;
+  font-size: clamp(30px, 3.6vw, 48px) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -1px !important;
+  font-weight: 800 !important;
+  margin: 0 !important;
+}
+
+.hero-title .title-black {
+  color: #111 !important;
+}
+
+.hero-title span {
+  display: block !important;
+  color: #ff2f7d !important;
+}
+
+.hero-subtitle {
+  max-width: 560px !important;
+  margin: 14px auto 0 !important;
+  font-size: 15.5px !important;
+  line-height: 1.65 !important;
+  color: #666 !important;
+}
+
+/* Nút về trang chủ ngang hàng */
+.back-home {
+  margin-top: 42px !important;
+  justify-self: end !important;
+  padding: 12px 20px !important;
+  font-size: 14px !important;
+}
+
+/* Đẩy card lên cao hơn để rút ngắn chiều cao */
+.slider-section {
+  margin-top: 10px !important;
+}
+
+.layout-scroll {
+  padding-top: 10px !important;
+}
+
+.bottom-tip {
+  margin-top: 12px !important;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .start-header-compact {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .brand {
+    margin: 0 auto !important;
+  }
+
+  .compact-hero {
+    margin: 0 auto !important;
+  }
+
+  .back-home {
+    justify-self: center !important;
+    margin-top: 8px !important;
+  }
+
+  .hero-title {
+    font-size: 34px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 15px !important;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <main class="start-page">
+   <header class="start-header-compact">
+  <a class="brand" href="../index.html" aria-label="Instant Memory">
+    <img src="../assets/icons/logotrangchu.png" alt="Instant Memory Logo">
+  </a>
+
+  <section class="hero compact-hero">
+    <div class="hero-badge">📸 Instant Memory Studio</div>
+
+    <h1 class="hero-title">
+      <span class="title-black">Chọn phong cách</span>
+      <span>trước khi chụp</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Chọn một bố cục photobooth phù hợp với mood của bạn trước khi vào phòng chụp.
+    </p>
+  </section>
+
+  <a class="back-home" href="../index.html">← Về trang chủ</a>
+</header>
+
+    <section class="slider-section">
+      <div class="slider-shell">
+        <button class="slider-btn" id="layoutPrev" type="button" aria-label="Mẫu trước">
+          ‹
+        </button>
+
+        <div class="layout-scroll" id="layoutScroll">
+          <div class="layout-track" id="layoutTrack">
+            <article class="layout-card">
+              <button
+                class="layout-holder"
+                type="button"
+                data-shots="3"
+                data-layout="strip"
+                data-frame="classic"
+              >
+                <span class="frame-badge try">THỬ NGAY</span>
+                <span class="frame-cover">
+                  <img src="../assets/spotlight/week7/week7.8.webp" alt="Bố cục A">
+                </span>
+              </button>
+
+              <div class="layout-info">
+                <h2 class="layout-name">Bố cục 3 ảnh</h2>
+                <p class="layout-description">Dải ảnh 6 × 2<br>3 kiểu tạo dáng</p>
+                <span class="layout-action">Vào phòng chụp 📷</span>
+              </div>
+            </article>
+
+            <article class="layout-card">
+              <button
+                class="layout-holder"
+                type="button"
+                data-shots="4"
+                data-layout="strip"
+                data-frame="pink"
+              >
+                <span class="frame-badge try">THỬ NGAY</span>
+                <span class="frame-cover">
+                  <img src="../assets/spotlight/week7/week7.9.webp" alt="Bố cục B">
+                </span>
+              </button>
+
+              <div class="layout-info">
+                <h2 class="layout-name">Bố cục 4 ảnh</h2>
+                <p class="layout-description">Dải ảnh 6 × 2<br>4 kiểu tạo dáng</p>
+                <span class="layout-action">Vào phòng chụp 💗</span>
+              </div>
+            </article>
+
+            <article class="layout-card">
+              <button
+                class="layout-holder"
+                type="button"
+                data-shots="4"
+                data-layout="strip"
+                data-frame="hearts"
+              >
+                <span class="frame-badge">MẪU MỚI</span>
+                <span class="frame-cover">
+                  <img src="../assets/spotlight/week7/week7.6.webp" alt="Bố cục trái tim">
+                </span>
+              </button>
+
+              <div class="layout-info">
+                <h2 class="layout-name">Bố cục dải</h2>
+                <p class="layout-description">Khung ảnh dễ thương<br>4 kiểu tạo dáng</p>
+                <span class="layout-action">Vào phòng chụp ♡</span>
+              </div>
+            </article>
+
+            <article class="layout-card">
+              <button
+                class="layout-holder"
+                type="button"
+                data-shots="4"
+                data-layout="strip"
+                data-frame="dog"
+              >
+                <span class="frame-badge">CUTE</span>
+                <span class="frame-cover">
+                  <img src="../assets/spotlight/week7/week7.4.webp" alt="Dog Filter">
+                </span>
+              </button>
+
+              <div class="layout-info">
+                <h2 class="layout-name">Cute Layout</h2>
+                <p class="layout-description">Phong cách vui nhộn<br>4 kiểu tạo dáng</p>
+                <span class="layout-action">Vào phòng chụp 🐶</span>
+              </div>
+            </article>
+
+            <article class="layout-card">
+              <button
+                class="layout-holder"
+                type="button"
+                data-shots="4"
+                data-layout="strip"
+                data-frame="vintage"
+              >
+                <span class="frame-badge">VINTAGE</span>
+                <span class="frame-cover">
+                  <img src="../assets/spotlight/week7/week7.5.webp" alt="Vintage Layout">
+                </span>
+              </button>
+
+              <div class="layout-info">
+                <h2 class="layout-name">Vintage Layout</h2>
+                <p class="layout-description">Màu ảnh hoài niệm<br>4 kiểu tạo dáng</p>
+                <span class="layout-action">Vào phòng chụp 🎞️</span>
+              </div>
+            </article>
+
+            <article class="layout-card">
+              <button
+                class="layout-holder"
+                type="button"
+                data-shots="4"
+                data-layout="grid"
+                data-frame="classic"
+              >
+                <span class="frame-badge">MODERN</span>
+                <span class="frame-cover grid-frame">
+                  <img src="../assets/spotlight/week7/week7.3.webp" alt="Bố cục 2x2">
+                </span>
+              </button>
+
+              <div class="layout-info">
+                <h2 class="layout-name">2 × 2 Grid</h2>
+                <p class="layout-description">Bố cục vuông hiện đại<br>4 kiểu tạo dáng</p>
+                <span class="layout-action">Vào phòng chụp ✨</span>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <button class="slider-btn" id="layoutNext" type="button" aria-label="Mẫu tiếp theo">
+          ›
+        </button>
+      </div>
+
+      <p class="bottom-tip">
+        Mẹo nhỏ: chọn layout 3 pose nếu bạn muốn chụp nhanh, chọn 4 pose nếu muốn có nhiều biểu cảm hơn.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const scroller = document.getElementById("layoutScroll");
+      const prevButton = document.getElementById("layoutPrev");
+      const nextButton = document.getElementById("layoutNext");
+      const firstCard = document.querySelector(".layout-card");
+      setTimeout(() => {
+  if (scroller && firstCard) {
+    const cardWidth = firstCard.getBoundingClientRect().width;
+    scroller.scrollLeft = 0;
+  }
+}, 100);
+      function getScrollAmount() {
+  if (!firstCard) return 382;
+
+  const cardWidth = firstCard.getBoundingClientRect().width;
+  const gap = 32;
+
+  return cardWidth + gap;
+}
+
+      prevButton.addEventListener("click", () => {
+        scroller.scrollBy({
+          left: -getScrollAmount(),
+          behavior: "smooth"
+        });
+      });
+
+      nextButton.addEventListener("click", () => {
+        scroller.scrollBy({
+          left: getScrollAmount(),
+          behavior: "smooth"
+        });
+      });
+
+      const layoutButtons = document.querySelectorAll(".layout-holder[data-shots]");
+
+      layoutButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const query = new URLSearchParams({
+            shots: button.dataset.shots,
+            layout: button.dataset.layout,
+            frame: button.dataset.frame
+          });
+
+          window.location.href = `studio.html?${query.toString()}`;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

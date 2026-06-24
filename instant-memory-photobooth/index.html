@@ -1,0 +1,336 @@
+  <!DOCTYPE html>
+  <html>
+   <meta content="text/html;charset=utf-8" http-equiv="content-type"/>
+   <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+     Instant Memory | Ghi lại khoảnh khắc, lưu giữ kỷ niệm
+    </title>
+    <meta content="Chụp ảnh phong c&aacute;ch photobooth trực tuyến, t&ugrave;y chỉnh khung, nh&atilde;n d&aacute;n v&agrave; tải dải ảnh chất lượng cao c&ugrave;ng Instant Memory." name="description"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&amp;family=Syne:wght@400..800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Mukta+Mahee:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+    <link href="assets/icons/photobooth-new-logo.png" rel="icon"/>
+    <link href="src/css/main.css" rel="stylesheet"/>
+    <link href="src/css/hero.css" rel="stylesheet"/>
+    <link href="src/css/preview-animations.css" rel="stylesheet"/>
+    <link href="src/css/popup.css" rel="stylesheet"/>
+    <link href="src/css/countdown.css" rel="stylesheet"/>
+   </head>
+   <body>
+    <section id="header-announcement">
+     <div id="announcement-holder">
+      <p class="lightgraytext" id="header-announcement-text">
+       <a href="https://www.instagram.com/ngquynhw_/" target="_blank">
+        Follow us on Instagram
+                      @InstantMemory
+       </a>
+      </p>
+     </div>
+    </section>
+    <header id="main-header">
+     <nav id="new-navbar">
+      <div id="logo-container">
+  <a class="home-logo" href="index.html" aria-label="Instant Memory">
+    <img src="assets/icons/logotrangchu.png" alt="Instant Memory Logo">
+  </a>
+</div>
+      <div id="nav-links">
+       <ul>
+        <li>
+         <a class="home-nav current-nav" href="index.html">
+          home
+         </a>
+        </li>
+        <li>
+         <a class="home-nav" href="pages/about.html">
+          about
+         </a>
+        </li>
+        <li>
+         <a class="home-nav" href="pages/privacy.html">
+          privacy policy
+         </a>
+        </li>
+        <li>
+         <a class="home-nav" href="pages/spotlight.html">
+          spotlight
+         </a>
+        </li>
+        <li>
+         <a class="home-nav" href="pages/contact.html">
+          contact
+         </a>
+        </li>
+        <li>
+         <a class="home-nav" href="pages/choose-layout.html">
+          choose layout
+         </a>
+        </li>
+       </ul>
+      </div>
+      <div id="right-section">
+       <div id="github-container">
+        <a href="https://github.com/judiemosinabre" target="_blank">
+         <img alt="github" class="s-icons-size github-icon" src="assets/icons/github-icon.webp"/>
+        </a>
+       </div>
+      </div>
+     </nav>
+     <button id="hamburger-home-trigger">
+      <img alt="" id="hamburger-icon" src="assets/icons/hamburger-icon.webp"/>
+     </button>
+     <div id="hamburger-nav">
+      <button id="hamburgerBtn">
+       <img alt="" id="hamburger-icon" src="assets/icons/hamburger-icon.webp"/>
+      </button>
+      <ul>
+       <li>
+        <img alt="home icon" class="nav-icons" src="assets/icons/home-icon.webp"/>
+        <a class="home-nav current-nav" href="index.html">
+         home
+        </a>
+       </li>
+       <li>
+        <img alt="about icon" class="nav-icons" src="assets/icons/about-icon.webp"/>
+        <a class="home-nav" href="pages/about.html">
+         about
+        </a>
+       </li>
+       <li>
+        <img alt="privacy icon" class="nav-icons" src="assets/icons/privacy-icon.webp"/>
+        <a class="home-nav" href="pages/privacy.html">
+         privacy policy
+        </a>
+       </li>
+       <li>
+        <img alt="star icon" class="nav-icons" src="assets/icons/star-icon.webp"/>
+        <a class="home-nav" href="pages/spotlight.html">
+         spotlight
+        </a>
+       </li>
+       <li>
+        <img alt="contact icon" class="nav-icons" src="assets/icons/contact-icon.webp"/>
+        <a class="home-nav" href="pages/contact.html">
+         contact
+        </a>
+       </li>
+       <li>
+        <img alt="layout icon" class="nav-icons" src="assets/icons/layout-icon.webp"/>
+        <a class="home-nav" href="pages/choose-layout.html">
+         choose layout
+        </a>
+       </li>
+      </ul>
+     </div>
+    </header>
+    <main id="main-section">
+     <section id="hero">
+      <div class="feature-popup hidden" id="featurePopup">
+       <div class="feature-popup-overlay" id="popupOverlay">
+       </div>
+       <div class="feature-popup-content">
+        <div class="popup-header">
+         <div class="popup-badge">
+          NEW
+         </div>
+         <button aria-label="Close popup" class="popup-close" id="closePopup">
+          <svg fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+           <line x1="18" x2="6" y1="6" y2="18">
+           </line>
+           <line x1="6" x2="18" y1="6" y2="18">
+           </line>
+          </svg>
+         </button>
+        </div>
+        <div class="popup-body">
+         <h2 class="feat-popup-title">
+          What's New
+         </h2>
+         <p class="popup-description">
+          Check out the latest features and improvements we've added to make
+                              your photobooth experience even better!
+          <br/>
+          <span class="date-updated">
+           <strong>
+            Date Updated: 06/12/2026
+           </strong>
+          </span>
+         </p>
+         <ul class="features-list">
+          <li class="feature-new">
+           🫧 N&uacute;t bật/tắt lật gương v&agrave; &dstrok;&egrave;n flash
+          </li>
+          <li class="feature-new">
+           💬 T&ugrave;y chọn camera cho m&aacute;y t&iacute;nh v&agrave; &dstrok;iện thoại
+          </li>
+          <li>
+           ⭐️ Bố cục bộ lọc c&uacute;n con ( 🐶 )
+          </li>
+          <li>
+           ⭐️ Bố cục bộ lọc tr&aacute;i tim ♡
+          </li>
+         </ul>
+        </div>
+        <div class="popup-footer">
+         <button class="popup-action-btn" id="dismissPopup">
+          Got it!
+         </button>
+        </div>
+       </div>
+      </div>
+      <div class="gradientBgCanvasHero">
+      </div>
+      <div id="announcement-section">
+       <div id="christmas-icon-container">
+        <svg fill="none" height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#fa1172" stroke="#fa1172" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </div>
+       <div id="countdown-content">
+        <p id="countdown-title">
+         Est. May 17, 2026
+        </p>
+        <div id="countdown-timer">
+         <div class="time-unit">
+          <span class="time-value" id="days">
+           00
+          </span>
+          <span class="time-label">
+           days
+          </span>
+         </div>
+         <div class="time-separator">
+          :
+         </div>
+         <div class="time-unit">
+          <span class="time-value" id="hours">
+           00
+          </span>
+          <span class="time-label">
+           hours
+          </span>
+         </div>
+         <div class="time-separator">
+          :
+         </div>
+         <div class="time-unit">
+          <span class="time-value" id="minutes">
+           00
+          </span>
+          <span class="time-label">
+           mins
+          </span>
+         </div>
+         <div class="time-separator">
+          :
+         </div>
+         <div class="time-unit">
+          <span class="time-value" id="seconds">
+           00
+          </span>
+          <span class="time-label">
+           secs
+          </span>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="heading-container">
+       <h1 class="hero-header">
+        <span class="text-span">
+         EST
+        </span>
+        <span class="hero-animation">
+         <span>
+          i
+         </span>
+         <span>
+          n
+         </span>
+         <span>
+          s
+         </span>
+         <span>
+          t
+         </span>
+         <span>
+          a
+         </span>
+         <span>
+          n
+         </span>
+         <span>
+          t
+         </span>
+         <span>
+          &nbsp;
+         </span>
+         <span>
+          m
+         </span>
+         <span>
+          e
+         </span>
+         <span>
+          m
+         </span>
+         <span>
+          o
+         </span>
+         <span>
+          r
+         </span>
+         <span>
+          y
+         </span>
+        </span>
+        <span class="text-span">
+         2026
+        </span>
+       </h1>
+       <p class="small-subtext">
+        Capture the moment, cherish the magic,
+        <br/>
+        relive the love
+       </p>
+      </div>
+      <div class="button-container">
+  <button class="new-main-button" id="go-start-page" type="button">
+    <span>BẮT ĐẦU</span>
+    <img alt="camera icon" class="camera-icon camera-size" src="assets/icons/camera-icon-white.webp"/>
+  </button>
+</div>
+     </section>
+     <img alt="sample image" id="preview-img6" loading="lazy" src="assets/spotlight/week7/week7.1.webp"/>
+     <img alt="sample image" id="preview-img3" loading="lazy" src="assets/spotlight/week7/week7.2.webp"/>
+     <article>
+     </article>
+    </main>
+    <script src="src/vendor/confetti.browser.min.js">
+    </script>
+    <script src="src/js/main.js">
+    </script>
+    <script src="src/js/announcement.js">
+    </script>
+    <script src="src/js/popup.js">
+    </script>
+    <script src="src/js/countdown.js">
+    </script>
+    <script src="src/js/vi.js">
+    </script>
+
+    <script>
+  const goStartPage = document.getElementById("go-start-page");
+
+  if (goStartPage) {
+    goStartPage.addEventListener("click", function () {
+      window.location.href = "pages/start.html";
+    });
+  }
+</script>
+   </body>
+  </html>

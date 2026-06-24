@@ -1,0 +1,186 @@
+/* Preview Images Container */
+/* article {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 60px 0;
+} */
+
+/* Uniform Image Sizing */
+#preview-img2,
+#preview-img3,
+#preview-img4,
+#preview-img6 {
+  position: absolute;
+  width: 120px;
+  height: auto;
+  object-fit: cover;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+  opacity: 0.65;
+}
+
+/* Left Side Images */
+#preview-img6 {
+  width: 100px;
+  top: 65%;
+  left: 18%;
+  transform: translateY(-50%);
+  /* Group 1: Left-to-Right tilt animation */
+  animation: tiltLeftToRight 30s ease-in-out infinite;
+}
+
+#preview-img4 {
+  top: 65%;
+  left: 24%;
+  transform: translateY(-50%);
+  /* Group 2: Right-to-Left tilt animation */
+  animation: tiltRightToLeft 30.5s ease-in-out infinite;
+}
+
+/* Right Side Images */
+#preview-img3 {
+  top: 65%;
+  right: 18%;
+  transform: translateY(-50%);
+  /* Group 1: Left-to-Right tilt animation */
+  animation: tiltLeftToRight 35.5s ease-in-out infinite 0.5s;
+  width: 95px;
+}
+
+#preview-img2 {
+  top: 65%;
+  right: 24%;
+  transform: translateY(-50%);
+  /* Group 2: Right-to-Left tilt animation */
+  animation: tiltRightToLeft 25s ease-in-out infinite 0.5s;
+}
+
+/* Tilt Animations - Group 1: Left to Right */
+@keyframes tiltLeftToRight {
+  0% {
+    transform: translateY(-50%) rotateZ(-8deg);
+  }
+  50% {
+    transform: translateY(-50%) rotateZ(8deg);
+  }
+  100% {
+    transform: translateY(-50%) rotateZ(-8deg);
+  }
+}
+
+/* Tilt Animations - Group 2: Right to Left (Opposite Direction) */
+@keyframes tiltRightToLeft {
+  0% {
+    transform: translateY(-50%) rotateZ(8deg);
+  }
+  50% {
+    transform: translateY(-50%) rotateZ(-8deg);
+  }
+  100% {
+    transform: translateY(-50%) rotateZ(8deg);
+  }
+}
+
+@media only screen and (max-width: 1200px) { 
+    #preview-img2,
+    #preview-img3,
+    #preview-img4,
+    #preview-img6 {
+        top: 65%;
+        width: 100px;
+        opacity: 0.85;
+    }
+
+}
+
+
+/* Tablet Responsiveness */
+@media only screen and (max-width: 1024px) {
+  /* article {
+    height: 350px;
+    margin: 50px 0;
+  } */
+
+  #preview-img2,
+  #preview-img3,
+  #preview-img4,
+  #preview-img6 {
+    top: 65%;
+    width: 90px;
+    opacity: 0.75;
+  }
+
+  #preview-img6 {
+    left: 16%;
+  }
+
+  #preview-img4 {
+    left: 22%;
+  }
+
+  #preview-img3 {
+    right: 16%;
+  }
+
+  #preview-img2 {
+    right: 22%;
+  }
+}
+
+/* Mobile Responsiveness */
+@media only screen and (max-width: 768px) {
+  /* article {
+    height: 300px;
+    margin: 40px 0;
+  } */
+
+  #preview-img2,
+  #preview-img3,
+  #preview-img4,
+  #preview-img6 {
+    top: 60%;
+    width: 100px;
+    opacity: 0.8;
+  }
+
+  #preview-img4,
+  #preview-img2 {
+    display: none;
+  }
+
+  #preview-img6 {
+    width: 80px;
+    left: 10%;
+  }
+
+  #preview-img3 {
+    width: 80px;
+    right: 15%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  /* article {
+    height: 250px;
+  } */
+
+  #preview-img2,
+  #preview-img3,
+  #preview-img4,
+  #preview-img6 {
+    width: 80px;
+    opacity: 0.75;
+  }
+
+  #preview-img6 {
+    width: 80px;
+    left: 9%;
+  }
+
+  #preview-img3 {
+    width: 80px;
+    right: 12%;
+  }
+}
