@@ -1,6 +1,6 @@
 const messages = [
-  'Theo dõi chúng tôi trên Instagram @photobooth_io và TikTok @photoboothio ♡',
-  'Chia sẻ ảnh và đừng quên gắn thẻ @photobooth_io!'
+  'Theo dõi chúng tôi trên Instagram @instantmemory và TikTok @instantmemory ♡',
+  'Chia sẻ ảnh và đừng quên gắn thẻ @instantmemory!'
 ];
 
 const announcementText = document.getElementById('header-announcement-text');
@@ -11,7 +11,7 @@ function showNextAnnouncement() {
   announcementText.classList.remove('fade');
   void announcementText.offsetWidth;
   announcementText.classList.add('fade');
-  announcementText.innerHTML = `<a href="https://www.instagram.com/photobooth_io/" target="_blank" rel="noopener">${messages[announcementIndex]}</a>`;
+  announcementText.innerHTML = `<a href="https://www.instagram.com/ngquynhw_/" target="_blank" rel="noopener">${messages[announcementIndex]}</a>`;
   announcementIndex = (announcementIndex + 1) % messages.length;
 }
 
